@@ -1,0 +1,9 @@
+[build]
+  command = "pnpm install && pnpm build-local"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

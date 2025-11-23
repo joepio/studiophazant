@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 interface PortfolioItem {
@@ -70,10 +71,11 @@ export function PortfolioGrid() {
     <section className="w-full px-4 pb-20">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto">
         {SAMPLE_ITEMS.map((item) => (
-          <div
+          <Link
             key={item.id}
+            href={`/projects/${item.id}`}
             className={cn(
-              "group relative overflow-hidden rounded-lg aspect-[4/5] cursor-pointer",
+              "group relative overflow-hidden rounded-lg aspect-[4/5] cursor-pointer block",
               item.span || "col-span-1"
             )}
           >
@@ -94,7 +96,7 @@ export function PortfolioGrid() {
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
-          </div>
+          </Link>
         ))}
       </div>
     </section>
