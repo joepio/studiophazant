@@ -1,7 +1,8 @@
 import React from "react";
 import client from "@/tina/__generated__/client";
 import Layout from "@/components/layout/layout";
-import ClientPage from "./[...urlSegments]/client-page";
+import { Hero } from "@/components/portfolio/hero";
+import { PortfolioGrid } from "@/components/portfolio/portfolio-grid";
 
 export const revalidate = 300;
 
@@ -12,7 +13,8 @@ export default async function Home() {
 
   return (
     <Layout rawPageData={data}>
-      <ClientPage {...data} />
+      <Hero />
+      <PortfolioGrid />
     </Layout>
   );
 }
