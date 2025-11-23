@@ -52,6 +52,13 @@ export function SimpleLayout({ children }: { children: React.ReactNode }) {
                         <span>About</span>
                       </Link>
                     </li>
+                    <li>
+                      <a
+                        href="mailto:info@studiophazant.nl"
+                        className="text-muted-foreground hover:text-accent-foreground block duration-150">
+                        <span>Contact</span>
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -72,6 +79,13 @@ export function SimpleLayout({ children }: { children: React.ReactNode }) {
                         className="text-muted-foreground hover:text-accent-foreground block duration-150">
                         <span>About</span>
                       </Link>
+                    </li>
+                    <li>
+                      <a
+                        href="mailto:info@studiophazant.nl"
+                        className="text-muted-foreground hover:text-accent-foreground block duration-150">
+                        <span>Contact</span>
+                      </a>
                     </li>
                   </ul>
                 </div>

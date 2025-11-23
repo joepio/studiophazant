@@ -19,7 +19,7 @@ interface PortfolioGridProps {
 export function PortfolioGrid({ projects }: PortfolioGridProps) {
   return (
     <section className="w-full px-4 pb-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
         {projects.map((item) => (
           <Link
             key={item.id}
