@@ -1,21 +1,22 @@
+```
 import React from "react";
 import { SimpleLayout } from "@/components/layout/simple-layout";
-import client from "@/tina/__generated__/client";
 import { notFound } from "next/navigation";
 import { ProjectPageClient } from "./client-page";
+import { getProjectFiles, getProject } from "@/lib/project-loader";
 
 export async function generateStaticParams() {
-  const projectsResponse = await client.queries.projectConnection();
-  const projects = projectsResponse.data.projectConnection.edges || [];
-
-  return projects.map((edge) => ({
-    id: edge?.node?._sys.filename || "",
+  const files = getProjectFiles();
+  return files.map((file) => ({
+    id: file.replace(/\.mdx$/, ""),
   }));
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
+  // For visual editing to work, we still need to pass the query and variables
+  // But for the initial render, we use the filesystem data
   const variables = { relativePath: `${id}.mdx` };
   const query = `
     query Project($relativePath: String!) {
@@ -32,18 +33,26 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   `;
 
   try {
-    const projectResponse = await client.queries.project(variables);
+    // Read from filesystem instead of client.queries.project(variables)
+    const projectData = getProject(`${id}.mdx`);
+
+    // Mock the response structure Tina expects
+    const tinaData = {
+      project: projectData
+    };
 
     return (
       <SimpleLayout>
         <ProjectPageClient
-          data={projectResponse.data}
+          data={tinaData}
           query={query}
           variables={variables}
         />
       </SimpleLayout>
     );
   } catch (error) {
+    console.error(error);
     notFound();
   }
 }
+```
