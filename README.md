@@ -1,38 +1,16 @@
-# Tina Starter 🦙
-
-![tina-nextjs-starter-demo](https://user-images.githubusercontent.com/103008/130587027-995ccc45-a852-4f90-b658-13e8e0517339.gif)
-
-This Next.js starter is powered by [TinaCMS](https://app.tina.io) for you and your team to visually live edit the structured content of your website. ✨
-
-The content is managed through Markdown and JSON files stored in your GitHub repository, and queried through Tina GraphQL API.
-
-### Features
-
-- [Tina Headless CMS](https://app.tina.io) for authentication, content modeling, visual editing and team management.
-- [Vercel](https://vercel.com) deployment to visually edit your site from the `/admin` route.
-- Local development workflow from the filesystem with a local GraqhQL server.
-
-## Requirements
-
-- Git, [Node.js Active LTS](https://nodejs.org/en/about/releases/), pnpm installed for local development.
-- A [TinaCMS](https://app.tina.io) account for live editing.
+# Studio Phazant
 
 ## Local Development
 
 Install the project's dependencies:
 
-> [!NOTE]  
-> [Do you know the best package manager for Node.js?](https://www.ssw.com.au/rules/best-package-manager-for-node/) Using the right package manager can greatly enhance your development workflow. We recommend using pnpm for its speed and efficient handling of dependencies. Learn more about why pnpm might be the best choice for your projects by checking out this rule from SSW.
-
-
-```
+```sh
+# install dependencies (requires Node + pnpm)
 pnpm install
-```
-
-Run the project locally:
-
-```
+# run locally
 pnpm dev
+# deploy to netlify (requires netlify CLI)
+netlify deploy --prod
 ```
 
 ### Local URLs
@@ -46,7 +24,7 @@ pnpm dev
 
 ### GitHub Pages
 
-This starter can be deployed to GitHub Pages. A GitHub Actions workflow is included that handles the build and deployment process. 
+This starter can be deployed to GitHub Pages. A GitHub Actions workflow is included that handles the build and deployment process.
 
 To deploy to GitHub Pages:
 
@@ -109,4 +87,3 @@ Licensed under the [Apache 2.0 license](./LICENSE).
 
 # Repository cleaned of LFS content
 # Repository cleaned of LFS content - Wed Sep 17 15:00:42 AEST 2025
-
