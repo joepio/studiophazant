@@ -1,4 +1,3 @@
-```
 import React from "react";
 import { SimpleLayout } from "@/components/layout/simple-layout";
 import { notFound } from "next/navigation";
@@ -55,4 +54,3 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
     notFound();
   }
 }
-```
