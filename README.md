@@ -1,5 +1,13 @@
 # Studio Phazant
 
+Portfolio website for Kristian Kodde's Studio Phazant.
+
+## Design
+
+- [Figma design](https://www.figma.com/design/hRdGCOe0YY8WtxXz9c1Zwq/website)
+- [Inspiration board pinterest](https://pin.it/5ExpvZtl0)
+- See the `./design` folder for files
+
 ## Local Development
 
 Install the project's dependencies:
@@ -33,6 +41,7 @@ To deploy to GitHub Pages:
 
 > [!NOTE]
 > When deploying to GitHub Pages, you'll need to update your secrets in Settings | Secrets and variables | Actions to include:
+>
 > - `NEXT_PUBLIC_TINA_CLIENT_ID`
 > - `TINA_TOKEN`
 >
@@ -84,6 +93,6 @@ These are rebuilt when your `tina` config changes.
 
 Licensed under the [Apache 2.0 license](./LICENSE).
 
-
 # Repository cleaned of LFS content
+
 # Repository cleaned of LFS content - Wed Sep 17 15:00:42 AEST 2025

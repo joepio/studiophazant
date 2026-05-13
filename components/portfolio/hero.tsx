@@ -1,17 +1,24 @@
 import React from "react";
-import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="w-full py-20 md:py-32 lg:py-40 bg-background text-foreground flex flex-col items-center justify-center text-center px-4">
-      <h1 className={cn(
-        "text-6xl md:text-8xl lg:text-9xl font-serif font-bold tracking-tighter mb-6 text-primary"
-      )}>
-        Studio Phazant
-      </h1>
-      <p className="text-xl md:text-2xl lg:text-3xl font-sans max-w-2xl text-muted-foreground">
-        Crafting visual stories with a touch of nostalgia and modern precision.
-      </p>
+    <section className="w-full px-6">
+      <div className="@container relative max-w-5xl mx-auto aspect-[16/10] overflow-hidden">
+        <Image
+          src="/uploads/stoelen_4.jpg"
+          alt="Studio Phazant — handcrafted lounge chairs"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <h1 className="font-script text-white text-center leading-[1.05] drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] text-[20cqw] -rotate-[10deg] -translate-x-[6%] -translate-y-[6%]">
+            <span className="block translate-x-[6%]">Studio</span>
+            <span className="block -translate-x-[6%]">Phazant</span>
+          </h1>
+        </div>
+      </div>
     </section>
   );
 }

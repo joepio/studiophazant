@@ -4,6 +4,46 @@
 @custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
 
+/* Brand fonts. Files live in /public/fonts/. */
+@font-face {
+  font-family: "Editorial Method";
+  src:
+    url("/fonts/TheEditorialMethod.otf") format("opentype"),
+    url("/fonts/TheEditorialMethod.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Editorial Method";
+  src:
+    url("/fonts/TheEditorialMethodBold.otf") format("opentype"),
+    url("/fonts/TheEditorialMethodBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* HV Fitzgerald — only Bold + Bold Italic supplied; we map both
+   weight-400 and weight-700 to the same files so utility classes
+   like `font-bold` work and regular weight doesn't fall through. */
+@font-face {
+  font-family: "HV Fitzgerald";
+  src: url("/fonts/HV%20Fitzgerald%20Bold.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HV Fitzgerald";
+  src: url("/fonts/HV%20Fitzgerald%20Bold%20Italic.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -44,31 +84,31 @@
 
 :root {
   --radius: 0.5rem;
-  /* Retro Palette */
-  /* Cream/Off-white background */
-  --background: oklch(0.97 0.02 95);
-  --foreground: oklch(0.2 0.02 50);
+  /* Studio Phazant palette */
+  /* Warm cream background */
+  --background: oklch(0.955 0.022 80);
+  --foreground: oklch(0.25 0.03 40);
 
-  --card: oklch(0.95 0.02 95);
-  --card-foreground: oklch(0.2 0.02 50);
+  --card: oklch(0.965 0.018 80);
+  --card-foreground: oklch(0.25 0.03 40);
 
-  --popover: oklch(0.97 0.02 95);
-  --popover-foreground: oklch(0.2 0.02 50);
+  --popover: oklch(0.955 0.022 80);
+  --popover-foreground: oklch(0.25 0.03 40);
 
-  /* Burnt Orange / Terracotta */
-  --primary: oklch(0.6 0.18 45);
-  --primary-foreground: oklch(0.98 0.01 95);
+  /* Terracotta red — used for nav + section headings */
+  --primary: oklch(0.58 0.17 35);
+  --primary-foreground: oklch(0.98 0.015 80);
 
-  /* Mustard Yellow */
-  --secondary: oklch(0.85 0.15 85);
-  --secondary-foreground: oklch(0.2 0.02 50);
+  /* Mustard / wood tone */
+  --secondary: oklch(0.78 0.12 80);
+  --secondary-foreground: oklch(0.25 0.03 40);
 
-  /* Olive Green */
-  --muted: oklch(0.7 0.1 140);
-  --muted-foreground: oklch(0.3 0.05 140);
+  /* Olive / forest green for tagline copy */
+  --muted: oklch(0.92 0.015 80);
+  --muted-foreground: oklch(0.45 0.04 45);
 
-  --accent: oklch(0.85 0.15 85);
-  --accent-foreground: oklch(0.2 0.02 50);
+  --accent: oklch(0.4 0.08 145);
+  --accent-foreground: oklch(0.97 0.02 80);
 
   --destructive: oklch(0.6 0.2 25);
   --border: oklch(0.2 0.02 50 / 0.1);
@@ -141,5 +181,17 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .font-sans {
+    font-family: "HV Fitzgerald", var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  }
+  .font-serif {
+    font-family: "HV Fitzgerald", var(--font-serif), ui-serif, Georgia, serif;
+  }
+  .font-script {
+    font-family: "Editorial Method", var(--font-script), "Brush Script MT", cursive;
   }
 }

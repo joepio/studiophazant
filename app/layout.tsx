@@ -1,12 +1,12 @@
 import React from "react";
 import { Metadata } from "next";
-import { DM_Serif_Display, DM_Sans } from "next/font/google";
+import { Playfair_Display, DM_Sans, Caveat } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "@/styles.css";
 
-const dmSerif = DM_Serif_Display({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: "400",
+  style: ["normal", "italic"],
   variable: "--font-serif",
 });
 
@@ -15,9 +15,16 @@ const dmSans = DM_Sans({
   variable: "--font-sans",
 });
 
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-script",
+});
+
 export const metadata: Metadata = {
   title: "Studio Phazant",
-  description: "Portfolio of Studio Phazant",
+  description:
+    "Custom furniture, objects and interior projects by Kristian Kodde — handmade with a sustainable approach using locally sourced, reclaimed and eco-friendly materials.",
 };
 
 export default function RootLayout({
@@ -26,7 +33,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn(dmSans.variable, dmSerif.variable)}>
+    <html
+      lang="en"
+      className={cn(dmSans.variable, playfair.variable, caveat.variable)}
+    >
       <body className="min-h-screen bg-background font-sans antialiased">
         {children}
       </body>

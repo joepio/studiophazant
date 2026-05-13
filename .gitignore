@@ -29,3 +29,8 @@ yarn-error.log*
 .tina/__generated__
 # Local Netlify folder
 .netlify
+
+# Raw/unprocessed product photos — drop large originals here,
+# they're compressed into /public/uploads/ for the live site.
+/public/uploads/raw/
+
