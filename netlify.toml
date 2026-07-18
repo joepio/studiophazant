@@ -1,5 +1,5 @@
 [build]
-  command = "pnpm install --frozen-lockfile && tinacms build --skip-search-index && next build"
+  command = "pnpm install --frozen-lockfile && tinacms build --skip-search-index --port 4002 --datalayer-port 9001 && next build"
 
 [build.environment]
   NODE_VERSION = "20.19.2"
