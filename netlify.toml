@@ -1,5 +1,5 @@
 [build]
-  command = "pnpm install --frozen-lockfile && tinacms build && next build"
+  command = "pnpm install --frozen-lockfile && tinacms build --skip-search-index && next build"
 
 [build.environment]
   NODE_VERSION = "22"
