@@ -188,10 +188,376 @@
   .font-sans {
     font-family: "HV Fitzgerald", var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   }
+  .font-ui-sans {
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  }
   .font-serif {
     font-family: "HV Fitzgerald", var(--font-serif), ui-serif, Georgia, serif;
   }
   .font-script {
     font-family: "Editorial Method", var(--font-script), "Brush Script MT", cursive;
+  }
+}
+
+@layer components {
+  .nav-logo-yellow img {
+    filter: brightness(0) saturate(100%) invert(88%) sepia(38%) saturate(650%) hue-rotate(338deg) brightness(104%) contrast(103%);
+  }
+}
+
+/*
+ * The studio statement is art-directed at two scales. On wide screens it is a
+ * collage; on narrow screens it becomes a vertical editorial sequence. Keeping
+ * the mobile layout explicit prevents the headline and body copy from competing
+ * for the same shrinking coordinates.
+ */
+@layer components {
+  .portfolio-tile {
+    isolation: isolate;
+    transition: background-color 500ms ease;
+  }
+
+  .portfolio-tile__shape {
+    d: var(--shape-base);
+    transition: d 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .portfolio-tile__image {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1), filter 650ms ease;
+  }
+
+  .portfolio-tile:hover .portfolio-tile__shape,
+  .portfolio-tile:focus-visible .portfolio-tile__shape {
+    d: var(--shape-hover);
+  }
+
+  .portfolio-tile:hover .portfolio-tile__image,
+  .portfolio-tile:focus-visible .portfolio-tile__image {
+    transform: scale(1.045) translate(1%, -0.5%);
+    filter: saturate(1.06) contrast(1.02);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .portfolio-tile__shape,
+    .portfolio-tile__image {
+      transition: none;
+    }
+  }
+
+  .tagline-strip {
+    width: 100%;
+    overflow: hidden;
+    background: #f7f1e8;
+    padding-block: clamp(3rem, 7vw, 6rem);
+  }
+
+  .tagline-strip__canvas {
+    position: relative;
+    min-height: 49rem;
+    isolation: isolate;
+  }
+
+  .tagline-strip__band,
+  .tagline-strip__image,
+  .tagline-strip__title,
+  .tagline-strip__copy,
+  .tagline-strip__link {
+    position: absolute;
+  }
+
+  .tagline-strip__band {
+    z-index: -1;
+  }
+
+  .tagline-strip__band--blue {
+    top: 9rem;
+    right: 0;
+    left: 68%;
+    height: 13rem;
+    background: #bedfe3;
+  }
+
+  .tagline-strip__band--yellow {
+    top: 27rem;
+    right: 74%;
+    left: 0;
+    height: 13rem;
+    background: #ffdd82;
+  }
+
+  .tagline-strip__image {
+    height: 13rem;
+    overflow: hidden;
+  }
+
+  .tagline-strip__image--one {
+    top: 5rem;
+    left: max(6vw, calc(50% - 36rem));
+    width: clamp(14rem, 19vw, 18rem);
+  }
+
+  .tagline-strip__image--two {
+    top: 9rem;
+    left: 42%;
+    width: clamp(20rem, 28vw, 26rem);
+  }
+
+  .tagline-strip__image--three {
+    top: 27rem;
+    left: max(18vw, calc(50% - 29rem));
+    width: 13rem;
+  }
+
+  .tagline-strip__image--four {
+    top: 35.5rem;
+    right: max(8vw, calc(50% - 35rem));
+    width: clamp(17rem, 23vw, 21rem);
+  }
+
+  .tagline-strip__title {
+    top: 6.5rem;
+    left: max(11vw, calc(50% - 35rem));
+    z-index: 2;
+    margin: 0;
+    color: #56894f;
+    font-family: "HV Fitzgerald", var(--font-serif), ui-serif, Georgia, serif;
+    font-size: clamp(4.8rem, 7vw, 7.2rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 0.82;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+  }
+
+  .tagline-strip__copy,
+  .tagline-strip__link {
+    left: 41%;
+    color: #56894f;
+    font-family: "HV Fitzgerald", var(--font-serif), ui-serif, Georgia, serif;
+    font-style: italic;
+    text-transform: uppercase;
+  }
+
+  .tagline-strip__copy {
+    top: 23.25rem;
+    width: min(48vw, 42rem);
+    margin: 0;
+    font-size: clamp(0.75rem, 1.2vw, 1rem);
+    line-height: 1.32;
+    letter-spacing: 0.13em;
+  }
+
+  .tagline-strip__link {
+    top: 31.75rem;
+    display: inline-block;
+    padding: 0.75rem 1rem;
+    background: #bedfe3;
+    color: #315f5d;
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  .tagline-strip__link:hover {
+    background: #ffdd82;
+    color: #315f5d;
+  }
+
+  .tagline-strip__mobile {
+    display: none;
+  }
+
+  @media (min-width: 768px) and (max-width: 1535px) {
+    .tagline-strip__canvas {
+      min-height: 45rem;
+    }
+
+    .tagline-strip__band--blue {
+      top: 8rem;
+      left: 96%;
+      height: 12rem;
+    }
+
+    .tagline-strip__band--yellow {
+      top: 29rem;
+      right: 70%;
+      height: 12rem;
+    }
+
+    .tagline-strip__image {
+      height: 12rem;
+    }
+
+    .tagline-strip__image--one {
+      top: 3rem;
+      left: 8%;
+      width: 30%;
+    }
+
+    .tagline-strip__image--two {
+      top: 8rem;
+      left: 72%;
+      width: 24%;
+    }
+
+    .tagline-strip__image--three {
+      top: 29rem;
+      left: 30%;
+      width: 12rem;
+    }
+
+    .tagline-strip__image--four {
+      top: 32rem;
+      right: 8%;
+      width: 28%;
+    }
+
+    .tagline-strip__title {
+      top: 8.1rem;
+      left: calc(36% - 3.4rem);
+      font-size: clamp(3.6rem, 6vw, 4.3rem);
+      font-style: oblique 6deg;
+      letter-spacing: 0.04em;
+    }
+
+    .tagline-strip__title-custom {
+      position: relative;
+      left: -0.1rem;
+    }
+
+    .tagline-strip__copy,
+    .tagline-strip__link {
+      left: 38%;
+    }
+
+    .tagline-strip__copy {
+      top: 23rem;
+      width: 58%;
+      font-size: clamp(0.72rem, 1.25vw, 0.9rem);
+    }
+
+    .tagline-strip__link {
+      top: 34rem;
+      left: 56%;
+    }
+  }
+
+  @media (min-width: 1024px) and (max-width: 1535px) {
+    .tagline-strip__band--blue {
+      left: 94%;
+    }
+
+    .tagline-strip__image--two {
+      left: 64%;
+      width: 30%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .tagline-strip {
+      padding-block: clamp(3rem, 12vw, 4.5rem);
+    }
+
+    .tagline-strip__desktop {
+      display: none;
+    }
+
+    .tagline-strip__mobile {
+      --mobile-cell-gap: 0;
+      display: flex;
+      flex-direction: column;
+      padding-inline: clamp(1.25rem, 6vw, 3rem);
+    }
+
+    .tagline-strip__mobile-identity {
+      display: grid;
+      grid-template-columns: 43% 1fr;
+      align-items: center;
+      gap: var(--mobile-cell-gap);
+      margin-bottom: clamp(2rem, 9vw, 3rem);
+    }
+
+    .tagline-strip__mobile-identity .tagline-strip__mobile-image {
+      height: clamp(9.5rem, 40vw, 13rem);
+    }
+
+    .tagline-strip__mobile-image {
+      position: relative;
+      min-width: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .tagline-strip__mobile-title,
+    .tagline-strip__mobile-copy,
+    .tagline-strip__mobile-link {
+      color: #56894f;
+      font-family: "HV Fitzgerald", var(--font-serif), ui-serif, Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .tagline-strip__mobile-title {
+      margin: 0;
+      font-size: clamp(2.45rem, 10vw, 4.5rem);
+      line-height: 0.86;
+      letter-spacing: -0.055em;
+    }
+
+    .tagline-strip__mobile-feature {
+      display: grid;
+      grid-template-columns: 48% 1fr;
+      gap: var(--mobile-cell-gap);
+      height: clamp(9.5rem, 38vw, 12rem);
+    }
+
+    .tagline-strip__mobile-color--yellow {
+      background: #ffdd82;
+    }
+
+    .tagline-strip__mobile-materials {
+      display: grid;
+      grid-template-columns: 35% 29% 1fr;
+      gap: var(--mobile-cell-gap);
+      height: clamp(9.5rem, 38vw, 12rem);
+    }
+
+    .tagline-strip__mobile-color--blue {
+      background: #bedfe3;
+    }
+
+    .tagline-strip__mobile-copy {
+      margin: clamp(1.6rem, 7vw, 2.5rem) 0;
+      font-size: clamp(0.82rem, 3.3vw, 1.05rem);
+      line-height: 1.34;
+      letter-spacing: 0.11em;
+    }
+
+    .tagline-strip__mobile-link {
+      align-self: center;
+      margin-top: clamp(2.5rem, 11vw, 4rem);
+      padding: 0.75rem 1rem;
+      background: #bedfe3;
+      color: #315f5d;
+      font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+      font-size: clamp(0.76rem, 3vw, 0.95rem);
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      transition: background-color 180ms ease, color 180ms ease;
+    }
+
+    .tagline-strip__mobile-link:hover {
+      background: #ffdd82;
+      color: #315f5d;
+    }
   }
 }
