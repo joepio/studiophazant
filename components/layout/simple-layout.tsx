@@ -4,12 +4,14 @@ import React from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { Monogram } from '@/components/portfolio/monogram';
+import { SalesCta } from '@/components/marketing/sales-cta';
+import { SHOW_ABOUT } from '@/lib/site-config';
 
 const navLinks = [
   { label: 'work', href: '/work' },
   { label: 'about', href: '/about' },
   { label: 'contact', href: 'mailto:info@studiophazant.nl' },
-];
+].filter((link) => SHOW_ABOUT || link.href !== '/about');
 
 function DesktopNavList({
   items,
@@ -107,6 +109,7 @@ export function SimpleLayout({ children }: { children: React.ReactNode }) {
       </div>
 
       <main className='flex-1'>{children}</main>
+      <SalesCta />
     </div>
   );
 }

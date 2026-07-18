@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from "react";
 import { LayoutProvider } from "./layout-context";
 import { Header } from "./nav/header";
 import { Footer } from "./nav/footer";
+import { SHOW_ABOUT } from "@/lib/site-config";
 
 type LayoutProps = PropsWithChildren & {
   rawPageData?: any;
@@ -21,7 +22,7 @@ export default function Layout({ children, rawPageData }: LayoutProps) {
         },
         nav: [
           { href: "/", label: "Home" },
-          { href: "/about", label: "About" },
+          ...(SHOW_ABOUT ? [{ href: "/about", label: "About" }] : []),
         ],
       },
       footer: {

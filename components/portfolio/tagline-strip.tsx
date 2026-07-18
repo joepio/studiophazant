@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SHOW_ABOUT } from "@/lib/site-config";
 
 const images = [
   {
@@ -62,9 +63,11 @@ export function TaglineStrip() {
           </span>
         </p>
 
-        <a href="/about" className="tagline-strip__link">
-          More about Studio Phazant
-        </a>
+        {SHOW_ABOUT && (
+          <a href="/about" className="tagline-strip__link">
+            More about Studio Phazant
+          </a>
+        )}
       </div>
 
       <div className="tagline-strip__mobile">
@@ -132,9 +135,11 @@ export function TaglineStrip() {
           Every piece is unique and made to last using reclaimed and locally sourced wood.
         </p>
 
-        <a href="/about" className="tagline-strip__mobile-link">
-          More about Studio Phazant
-        </a>
+        {SHOW_ABOUT && (
+          <a href="/about" className="tagline-strip__mobile-link">
+            More about Studio Phazant
+          </a>
+        )}
       </div>
     </section>
   );

@@ -22,9 +22,20 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Studio Phazant",
+  title: {
+    default: "Studio Phazant | Maatwerk meubels in Noord-Holland",
+    template: "%s | Studio Phazant",
+  },
   description:
-    "Custom furniture, objects and interior projects by Kristian Kodde — handmade with a sustainable approach using locally sourced, reclaimed and eco-friendly materials.",
+    "Studio Phazant is meubelmaker in Noord-Holland voor maatwerk meubels, unieke interieurs en houten objecten — ontworpen en handgemaakt met lokaal en hergebruikt hout.",
+  keywords: [
+    "maatwerk meubels",
+    "meubelmaker Noord-Holland",
+    "meubels op maat",
+    "houten meubels",
+    "maatwerk interieur",
+    "handgemaakte meubels",
+  ],
 };
 
 export default function RootLayout({

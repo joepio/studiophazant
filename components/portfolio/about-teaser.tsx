@@ -1,8 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { SHOW_ABOUT } from "@/lib/site-config";
 
 export function AboutTeaser() {
+  if (!SHOW_ABOUT) return null;
+
   return (
     <section className="w-full mb-16 md:mb-24">
       <div className="relative w-full py-16 md:py-28">
