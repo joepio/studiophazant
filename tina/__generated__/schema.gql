@@ -98,6 +98,7 @@ type Project implements Node & Document {
   category: String!
   description: String
   imageUrl: String!
+  gallery: [String]
   color: String
   span: String
   featured: Boolean
@@ -130,6 +131,7 @@ input ProjectFilter {
   category: StringFilter
   description: StringFilter
   imageUrl: ImageFilter
+  gallery: ImageFilter
   color: StringFilter
   span: StringFilter
   featured: BooleanFilter
@@ -259,6 +261,12 @@ type PageBlocksVideo {
 union PageBlocks = PageBlocksHero | PageBlocksCallout | PageBlocksFeatures | PageBlocksStats | PageBlocksCta | PageBlocksContent | PageBlocksTestimonial | PageBlocksVideo
 
 type Page implements Node & Document {
+  heroImage: String
+  featuredImages: [String]
+  taglineImages: [String]
+  taglineTitle: String
+  taglineFirst: String
+  taglineSecond: String
   blocks: [PageBlocks]
   id: ID!
   _sys: SystemInfo!
@@ -404,6 +412,12 @@ input PageBlocksFilter {
 }
 
 input PageFilter {
+  heroImage: ImageFilter
+  featuredImages: ImageFilter
+  taglineImages: ImageFilter
+  taglineTitle: StringFilter
+  taglineFirst: StringFilter
+  taglineSecond: StringFilter
   blocks: PageBlocksFilter
 }
 
@@ -554,6 +568,7 @@ input ProjectMutation {
   category: String
   description: String
   imageUrl: String
+  gallery: [String]
   color: String
   span: String
   featured: Boolean
@@ -681,6 +696,12 @@ input PageBlocksMutation {
 }
 
 input PageMutation {
+  heroImage: String
+  featuredImages: [String]
+  taglineImages: [String]
+  taglineTitle: String
+  taglineFirst: String
+  taglineSecond: String
   blocks: [PageBlocksMutation]
 }
 

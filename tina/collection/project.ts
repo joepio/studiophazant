@@ -39,17 +39,20 @@ const Project: Collection = {
       required: true,
     },
     {
+      type: "image",
+      name: "gallery",
+      label: "Project photos",
+      list: true,
+    },
+    {
       type: "string",
       name: "color",
       label: "Overlay Color",
       options: [
-        { value: "bg-primary", label: "Primary" },
-        { value: "bg-secondary", label: "Secondary" },
-        { value: "bg-accent", label: "Accent" },
-        { value: "bg-muted", label: "Muted" },
-        { value: "bg-destructive", label: "Destructive" },
-        { value: "bg-chart-2", label: "Chart 2" },
-        { value: "bg-chart-3", label: "Chart 3" },
+        { value: "#56894f", label: "Green" },
+        { value: "#bedfe3", label: "Blue" },
+        { value: "#ffdd82", label: "Yellow" },
+        { value: "#d89557", label: "Terracotta" },
       ],
     },
     {

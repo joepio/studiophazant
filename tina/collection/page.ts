@@ -24,6 +24,41 @@ const Page: Collection = {
   },
   fields: [
     {
+      type: 'image',
+      name: 'heroImage',
+      label: 'Homepage hero image',
+    },
+    {
+      type: 'image',
+      name: 'featuredImages',
+      label: 'Featured furniture images',
+      list: true,
+    },
+    {
+      type: 'image',
+      name: 'taglineImages',
+      label: 'Studio section images',
+      list: true,
+    },
+    {
+      type: 'string',
+      name: 'taglineTitle',
+      label: 'Studio section title',
+      ui: { component: 'textarea' },
+    },
+    {
+      type: 'string',
+      name: 'taglineFirst',
+      label: 'Studio section first paragraph',
+      ui: { component: 'textarea' },
+    },
+    {
+      type: 'string',
+      name: 'taglineSecond',
+      label: 'Studio section second paragraph',
+      ui: { component: 'textarea' },
+    },
+    {
       type: 'object',
       list: true,
       name: 'blocks',

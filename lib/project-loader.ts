@@ -3,6 +3,14 @@ import path from "path";
 import matter from "gray-matter";
 
 const projectsDirectory = path.join(process.cwd(), "content/projects");
+const pagesDirectory = path.join(process.cwd(), "content/pages");
+
+export function getPage(slug: string) {
+  const filepath = path.join(pagesDirectory, `${slug}.mdx`);
+  if (!fs.existsSync(filepath)) return {};
+  const { data, content } = matter(fs.readFileSync(filepath, "utf8"));
+  return { ...data, _body: content };
+}
 
 export function getProjectFiles() {
   if (!fs.existsSync(projectsDirectory)) {

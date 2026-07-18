@@ -201,7 +201,17 @@
 
 @layer components {
   .nav-logo-yellow img {
-    filter: brightness(0) saturate(100%) invert(88%) sepia(38%) saturate(650%) hue-rotate(338deg) brightness(104%) contrast(103%);
+    display: none;
+  }
+
+  .nav-logo-yellow::before {
+    display: block;
+    width: 60px;
+    height: 60px;
+    background: #ffe28a;
+    content: "";
+    mask: url("/logo-new.svg") center / contain no-repeat;
+    -webkit-mask: url("/logo-new.svg") center / contain no-repeat;
   }
 }
 
@@ -373,7 +383,7 @@
     display: none;
   }
 
-  @media (min-width: 768px) and (max-width: 1535px) {
+  @media (min-width: 768px) {
     .tagline-strip__canvas {
       min-height: 45rem;
     }
@@ -420,7 +430,7 @@
 
     .tagline-strip__title {
       top: 8.1rem;
-      left: calc(36% - 3.4rem);
+      left: 40%;
       font-size: clamp(3.6rem, 6vw, 4.3rem);
       font-style: oblique 6deg;
       letter-spacing: 0.04em;
@@ -448,7 +458,7 @@
     }
   }
 
-  @media (min-width: 1024px) and (max-width: 1535px) {
+  @media (min-width: 1024px) {
     .tagline-strip__band--blue {
       left: 94%;
     }

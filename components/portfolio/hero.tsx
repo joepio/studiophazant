@@ -1,13 +1,16 @@
 import React from "react";
 import Image from "next/image";
 
-export function Hero() {
+export function Hero({ imageSrc = "/uploads/stoelen_4.jpg", imageAlt = "Studio Phazant — handcrafted lounge chairs" }: {
+  imageSrc?: string;
+  imageAlt?: string;
+}) {
   return (
     <section className="w-full">
       <div className="@container relative min-h-[calc(100svh-10px)] overflow-hidden bg-[#1c321e]">
         <Image
-          src="/uploads/stoelen_4.jpg"
-          alt="Studio Phazant — handcrafted lounge chairs"
+          src={imageSrc}
+          alt={imageAlt}
           fill
           priority
           className="object-cover object-[center_58%]"

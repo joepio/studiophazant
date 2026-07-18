@@ -4,6 +4,7 @@ fragment ProjectParts on Project {
   category
   description
   imageUrl
+  gallery
   color
   span
   featured
@@ -11,6 +12,12 @@ fragment ProjectParts on Project {
 
 fragment PageParts on Page {
   __typename
+  heroImage
+  featuredImages
+  taglineImages
+  taglineTitle
+  taglineFirst
+  taglineSecond
   blocks {
     __typename
     ... on PageBlocksHero {

@@ -1196,6 +1196,41 @@ var Page = {
   },
   fields: [
     {
+      type: "image",
+      name: "heroImage",
+      label: "Homepage hero image"
+    },
+    {
+      type: "image",
+      name: "featuredImages",
+      label: "Featured furniture images",
+      list: true
+    },
+    {
+      type: "image",
+      name: "taglineImages",
+      label: "Studio section images",
+      list: true
+    },
+    {
+      type: "string",
+      name: "taglineTitle",
+      label: "Studio section title",
+      ui: { component: "textarea" }
+    },
+    {
+      type: "string",
+      name: "taglineFirst",
+      label: "Studio section first paragraph",
+      ui: { component: "textarea" }
+    },
+    {
+      type: "string",
+      name: "taglineSecond",
+      label: "Studio section second paragraph",
+      ui: { component: "textarea" }
+    },
+    {
       type: "object",
       list: true,
       name: "blocks",
@@ -1258,17 +1293,20 @@ var Project = {
       required: true
     },
     {
+      type: "image",
+      name: "gallery",
+      label: "Project photos",
+      list: true
+    },
+    {
       type: "string",
       name: "color",
       label: "Overlay Color",
       options: [
-        { value: "bg-primary", label: "Primary" },
-        { value: "bg-secondary", label: "Secondary" },
-        { value: "bg-accent", label: "Accent" },
-        { value: "bg-muted", label: "Muted" },
-        { value: "bg-destructive", label: "Destructive" },
-        { value: "bg-chart-2", label: "Chart 2" },
-        { value: "bg-chart-3", label: "Chart 3" }
+        { value: "#56894f", label: "Green" },
+        { value: "#bedfe3", label: "Blue" },
+        { value: "#ffdd82", label: "Yellow" },
+        { value: "#d89557", label: "Terracotta" }
       ]
     },
     {

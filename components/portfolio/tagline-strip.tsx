@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import { SHOW_ABOUT } from "@/lib/site-config";
 
@@ -24,14 +25,30 @@ const images = [
   },
 ];
 
-export function TaglineStrip() {
+export function TaglineStrip({
+  imageSources,
+  title = "Custom\nFurniture,\nInterior,\nObjects.",
+  firstCopy = "Designed and handmade with a focus on craftsmanship and sustainability.",
+  secondCopy = "Every piece is unique and made to last using reclaimed and locally sourced wood.",
+}: {
+  imageSources?: string[];
+  title?: string;
+  firstCopy?: string;
+  secondCopy?: string;
+}) {
+  const sectionImages = images.map((image, index) => ({
+    ...image,
+    src: imageSources?.[index] || image.src,
+  }));
+  const titleLines = title.split("\n").filter(Boolean);
+
   return (
     <section id="interiors" className="tagline-strip">
       <div className="tagline-strip__canvas tagline-strip__desktop">
         <div className="tagline-strip__band tagline-strip__band--blue" />
         <div className="tagline-strip__band tagline-strip__band--yellow" />
 
-        {images.map((image) => (
+        {sectionImages.map((image) => (
           <div className={image.className} key={image.src}>
             <Image
               src={image.src}
@@ -44,22 +61,21 @@ export function TaglineStrip() {
         ))}
 
         <h2 className="tagline-strip__title">
-          <span className="tagline-strip__title-custom">Custom</span>
-          <br />
-          Furniture,
-          <br />
-          Interior,
-          <br />
-          Objects.
+          {titleLines.map((line, index) => (
+            <React.Fragment key={`${line}-${index}`}>
+              {index > 0 && <br />}
+              <span className={index === 0 ? "tagline-strip__title-custom" : undefined}>{line}</span>
+            </React.Fragment>
+          ))}
         </h2>
 
         <p className="tagline-strip__copy">
           <span className="tagline-strip__copy-first">
-            Designed and handmade with a focus on craftsmanship and sustainability.
+            {firstCopy}
           </span>
           <br />
           <span className="tagline-strip__copy-second">
-            Every piece is unique and made to last using reclaimed and locally sourced wood.
+            {secondCopy}
           </span>
         </p>
 
@@ -74,21 +90,20 @@ export function TaglineStrip() {
         <div className="tagline-strip__mobile-identity">
           <div className="tagline-strip__mobile-image">
             <Image
-              src={images[0].src}
-              alt={images[0].alt}
+              src={sectionImages[0].src}
+              alt={sectionImages[0].alt}
               fill
               sizes="48vw"
               className="object-cover"
             />
           </div>
           <h2 className="tagline-strip__mobile-title">
-            Custom
-            <br />
-            Furniture,
-            <br />
-            Interior,
-            <br />
-            Objects.
+            {titleLines.map((line, index) => (
+              <React.Fragment key={`${line}-mobile-${index}`}>
+                {index > 0 && <br />}
+                {line}
+              </React.Fragment>
+            ))}
           </h2>
         </div>
 
@@ -96,8 +111,8 @@ export function TaglineStrip() {
           <div className="tagline-strip__mobile-color tagline-strip__mobile-color--yellow" />
           <div className="tagline-strip__mobile-image">
             <Image
-              src={images[1].src}
-              alt={images[1].alt}
+              src={sectionImages[1].src}
+              alt={sectionImages[1].alt}
               fill
               sizes="58vw"
               className="object-cover"
@@ -106,14 +121,14 @@ export function TaglineStrip() {
         </div>
 
         <p className="tagline-strip__mobile-copy">
-          Designed and handmade with a focus on craftsmanship and sustainability.
+          {firstCopy}
         </p>
 
         <div className="tagline-strip__mobile-materials">
           <div className="tagline-strip__mobile-image">
             <Image
-              src={images[2].src}
-              alt={images[2].alt}
+              src={sectionImages[2].src}
+              alt={sectionImages[2].alt}
               fill
               sizes="40vw"
               className="object-cover"
@@ -122,8 +137,8 @@ export function TaglineStrip() {
           <div className="tagline-strip__mobile-color tagline-strip__mobile-color--blue" />
           <div className="tagline-strip__mobile-image">
             <Image
-              src={images[3].src}
-              alt={images[3].alt}
+              src={sectionImages[3].src}
+              alt={sectionImages[3].alt}
               fill
               sizes="40vw"
               className="object-cover"
@@ -132,7 +147,7 @@ export function TaglineStrip() {
         </div>
 
         <p className="tagline-strip__mobile-copy">
-          Every piece is unique and made to last using reclaimed and locally sourced wood.
+          {secondCopy}
         </p>
 
         {SHOW_ABOUT && (
