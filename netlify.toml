@@ -2,7 +2,7 @@
   command = "pnpm install --frozen-lockfile && tinacms build --skip-search-index && next build"
 
 [build.environment]
-  NODE_VERSION = "22"
+  NODE_VERSION = "20.19.2"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
