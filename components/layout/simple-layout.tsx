@@ -34,7 +34,7 @@ function DesktopNavList({
   );
 }
 
-export function SimpleLayout({ children }: { children: React.ReactNode }) {
+export function SimpleLayout({ children, showSalesCta = true }: { children: React.ReactNode; showSalesCta?: boolean }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -109,7 +109,7 @@ export function SimpleLayout({ children }: { children: React.ReactNode }) {
       </div>
 
       <main className='flex-1'>{children}</main>
-      <SalesCta />
+      {showSalesCta && <SalesCta />}
     </div>
   );
 }

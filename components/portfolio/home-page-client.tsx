@@ -3,13 +3,12 @@
 import { useTina } from "tinacms/dist/react";
 import { Hero } from "@/components/portfolio/hero";
 import { PortfolioSection } from "@/components/portfolio/portfolio-grid";
-import { TaglineStrip } from "@/components/portfolio/tagline-strip";
+import { HomeShowcase } from "@/components/portfolio/home-showcase";
 
-export function HomePageClient({ data, query, variables, furniture }: any) {
+export function HomePageClient({ data, query, variables, furniture, projects }: any) {
   const { data: tinaData } = useTina({ query, variables, data });
   const home = tinaData.page || {};
   const featuredImages = home.featuredImages || [];
-  const taglineImages = home.taglineImages || [];
 
   const furnitureFeature = [
     { ...furniture[0], imageUrl: featuredImages[0] || "/uploads/blokstoel_7.jpg" },
@@ -26,12 +25,7 @@ export function HomePageClient({ data, query, variables, furniture }: any) {
     <>
       <Hero imageSrc={home.heroImage || "/uploads/stoelen_4.jpg"} />
       <PortfolioSection id="work" title="Furniture" projects={furnitureFeature} compact />
-      <TaglineStrip
-        imageSources={taglineImages}
-        title={home.taglineTitle}
-        firstCopy={home.taglineFirst}
-        secondCopy={home.taglineSecond}
-      />
+      <HomeShowcase home={home} projects={projects} />
     </>
   );
 }

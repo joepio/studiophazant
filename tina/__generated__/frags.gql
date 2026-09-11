@@ -12,6 +12,16 @@ fragment ProjectParts on Project {
 
 fragment PageParts on Page {
   __typename
+  spotlightImage
+  spotlightAlt
+  spotlightVideo
+  carouselTitle
+  contactImage
+  contactPortrait
+  contactText
+  contactLabel
+  studioImage
+  studioCopy
   heroImage
   featuredImages
   taglineImages

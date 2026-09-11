@@ -261,6 +261,16 @@ type PageBlocksVideo {
 union PageBlocks = PageBlocksHero | PageBlocksCallout | PageBlocksFeatures | PageBlocksStats | PageBlocksCta | PageBlocksContent | PageBlocksTestimonial | PageBlocksVideo
 
 type Page implements Node & Document {
+  spotlightImage: String
+  spotlightAlt: String
+  spotlightVideo: String
+  carouselTitle: String
+  contactImage: String
+  contactPortrait: String
+  contactText: String
+  contactLabel: String
+  studioImage: String
+  studioCopy: String
   heroImage: String
   featuredImages: [String]
   taglineImages: [String]
@@ -412,6 +422,16 @@ input PageBlocksFilter {
 }
 
 input PageFilter {
+  spotlightImage: ImageFilter
+  spotlightAlt: StringFilter
+  spotlightVideo: StringFilter
+  carouselTitle: StringFilter
+  contactImage: ImageFilter
+  contactPortrait: ImageFilter
+  contactText: StringFilter
+  contactLabel: StringFilter
+  studioImage: ImageFilter
+  studioCopy: StringFilter
   heroImage: ImageFilter
   featuredImages: ImageFilter
   taglineImages: ImageFilter
@@ -696,6 +716,16 @@ input PageBlocksMutation {
 }
 
 input PageMutation {
+  spotlightImage: String
+  spotlightAlt: String
+  spotlightVideo: String
+  carouselTitle: String
+  contactImage: String
+  contactPortrait: String
+  contactText: String
+  contactLabel: String
+  studioImage: String
+  studioCopy: String
   heroImage: String
   featuredImages: [String]
   taglineImages: [String]

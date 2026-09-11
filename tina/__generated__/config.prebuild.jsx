@@ -1195,6 +1195,16 @@ var Page = {
     }
   },
   fields: [
+    { type: "image", name: "spotlightImage", label: "Highlighted project / video poster" },
+    { type: "string", name: "spotlightAlt", label: "Highlighted image description" },
+    { type: "string", name: "spotlightVideo", label: "Highlighted video URL (MP4 or WebM)", description: "Leave empty to show the image. Video has playback controls." },
+    { type: "string", name: "carouselTitle", label: "Project carousel handwritten text", ui: { component: "textarea" } },
+    { type: "image", name: "contactImage", label: "Contact background photo" },
+    { type: "image", name: "contactPortrait", label: "Contact portrait" },
+    { type: "string", name: "contactText", label: "Contact invitation", ui: { component: "textarea" } },
+    { type: "string", name: "contactLabel", label: "Contact link text" },
+    { type: "image", name: "studioImage", label: "Closing studio photo" },
+    { type: "string", name: "studioCopy", label: "Closing studio description", ui: { component: "textarea" } },
     {
       type: "image",
       name: "heroImage",
