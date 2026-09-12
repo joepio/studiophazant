@@ -94,6 +94,11 @@ type Collection {
 union DocumentNode = Project | Page | Global | Folder
 
 type Project implements Node & Document {
+  workOrder: Float
+  materials: String
+  availability: String
+  enquiry: String
+  galleryLayout: String
   title: String!
   category: String!
   description: String
@@ -105,6 +110,16 @@ type Project implements Node & Document {
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
+}
+
+input NumberFilter {
+  lt: Float
+  lte: Float
+  gte: Float
+  gt: Float
+  eq: Float
+  exists: Boolean
+  in: [Float]
 }
 
 input StringFilter {
@@ -127,6 +142,11 @@ input BooleanFilter {
 }
 
 input ProjectFilter {
+  workOrder: NumberFilter
+  materials: StringFilter
+  availability: StringFilter
+  enquiry: StringFilter
+  galleryLayout: StringFilter
   title: StringFilter
   category: StringFilter
   description: StringFilter
@@ -261,6 +281,10 @@ type PageBlocksVideo {
 union PageBlocks = PageBlocksHero | PageBlocksCallout | PageBlocksFeatures | PageBlocksStats | PageBlocksCta | PageBlocksContent | PageBlocksTestimonial | PageBlocksVideo
 
 type Page implements Node & Document {
+  aboutImage: String
+  aboutBadge: String
+  aboutEnglish: String
+  aboutDutch: String
   spotlightImage: String
   spotlightAlt: String
   spotlightVideo: String
@@ -422,6 +446,10 @@ input PageBlocksFilter {
 }
 
 input PageFilter {
+  aboutImage: ImageFilter
+  aboutBadge: ImageFilter
+  aboutEnglish: StringFilter
+  aboutDutch: StringFilter
   spotlightImage: ImageFilter
   spotlightAlt: StringFilter
   spotlightVideo: StringFilter
@@ -584,6 +612,11 @@ input DocumentMutation {
 }
 
 input ProjectMutation {
+  workOrder: Float
+  materials: String
+  availability: String
+  enquiry: String
+  galleryLayout: String
   title: String
   category: String
   description: String
@@ -716,6 +749,10 @@ input PageBlocksMutation {
 }
 
 input PageMutation {
+  aboutImage: String
+  aboutBadge: String
+  aboutEnglish: String
+  aboutDutch: String
   spotlightImage: String
   spotlightAlt: String
   spotlightVideo: String

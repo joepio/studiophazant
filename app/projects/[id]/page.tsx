@@ -11,6 +11,13 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  if (!getProjectFiles().includes(`${id}.mdx`)) return {};
+  const project = getProject(`${id}.mdx`);
+  return { title: project.title, description: project.description, openGraph: { images: [project.imageUrl] } };
+}
+
 export default async function ProjectPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
@@ -28,6 +35,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         span
         featured
         gallery
+        materials
+        availability
+        enquiry
+        galleryLayout
       }
     }
   `;
@@ -42,7 +53,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
     };
 
     return (
-      <SimpleLayout>
+      <SimpleLayout editorial showSalesCta={false}>
         <ProjectPageClient
           data={tinaData}
           query={query}

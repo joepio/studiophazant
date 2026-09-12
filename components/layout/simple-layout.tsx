@@ -19,10 +19,10 @@ function DesktopNavList({
   items: { label: string; href: string }[];
 }) {
   return (
-    <ul className='flex items-center gap-3 lg:gap-5 font-ui-sans text-[#ffe28a] text-[10px] lg:text-xs uppercase tracking-[0.22em]'>
+    <ul className='flex items-center gap-3 lg:gap-5 font-ui-sans text-[10px] lg:text-xs uppercase tracking-[0.22em]'>
       {items.map((item, i) => (
         <React.Fragment key={item.href}>
-          {i > 0 && <li aria-hidden className='w-px h-3 bg-[#ffe28a]/70 self-center rotate-[20deg]' />}
+          {i > 0 && <li aria-hidden className='w-px h-3 bg-current opacity-70 self-center rotate-[20deg]' />}
           <li>
             <Link href={item.href} className='hover:opacity-70 transition-opacity'>
               {item.label}
@@ -34,7 +34,7 @@ function DesktopNavList({
   );
 }
 
-export function SimpleLayout({ children, showSalesCta = true }: { children: React.ReactNode; showSalesCta?: boolean }) {
+export function SimpleLayout({ children, showSalesCta = true, editorial = false }: { children: React.ReactNode; showSalesCta?: boolean; editorial?: boolean }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -56,22 +56,22 @@ export function SimpleLayout({ children, showSalesCta = true }: { children: Reac
   }, []);
 
   return (
-    <div className='min-h-screen flex flex-col'>
-      <header className='absolute inset-x-0 top-0 z-30 px-6 pt-5 text-[#ffe28a] md:pt-7'>
+    <div className={`min-h-screen flex flex-col ${editorial ? 'bg-[#fffaf5] text-[#55874a]' : ''}`}>
+      <header className={`${editorial ? 'relative text-[#55874a] pb-10 md:pb-16' : 'absolute inset-x-0 top-0 text-[#ffe28a]'} z-30 px-6 pt-5 md:pt-7`}>
         {/* Mobile: hamburger left, logo right */}
         <div className='md:hidden flex items-center justify-between max-w-5xl mx-auto'>
           <button type='button' onClick={() => setMenuOpen(true)} aria-label='Open menu' aria-expanded={menuOpen} className='p-1 -ml-1'>
             <Menu className='h-6 w-6' />
           </button>
           <Link href='/' aria-label='Studio Phazant home' className='opacity-90'>
-            <Monogram size='xl' withText={false} className='nav-logo-yellow' />
+            <Monogram size='xl' withText={false} color={editorial ? '#55874a' : '#ffe28a'} />
           </Link>
         </div>
 
         {/* Desktop: one centered logo + navigation row */}
         <nav className='hidden md:flex max-w-6xl mx-auto items-center justify-center gap-8'>
           <Link href='/' aria-label='Studio Phazant home' className='shrink-0 opacity-90'>
-            <Monogram size='xl' withText={false} className='nav-logo-yellow' />
+            <Monogram size='xl' withText={false} color={editorial ? '#55874a' : '#ffe28a'} />
           </Link>
           <DesktopNavList items={navLinks} />
         </nav>
@@ -83,6 +83,7 @@ export function SimpleLayout({ children, showSalesCta = true }: { children: Reac
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         aria-hidden={!menuOpen}
+        hidden={!menuOpen}
         role='dialog'
         aria-modal='true'
       >

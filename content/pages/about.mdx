@@ -1,6 +1,34 @@
 ---
-blocks:
-  - body: "# What is this?\n\nThis is a [TinaCMS](https://tina.io)-enabled Next.js app, so you can edit your content on a live page. In this project the Tina file-based CMS is used via GraphQL: it's powered by a schema that *you* define. It not only serves content from Markdown files in your repository, but it also generates TinaCMS forms for you automatically ✨.\n\n## New to TinaCMS?\n\nTinaCMS is feature-rich, and leaves a lot of power up to the user on how it's configured.\n\nThere can be a learning curve as you get to grips with how it all fits together.\n\nThe tutorials in our docs will guide you through the basics, to the more advanced ways to use the tool.\n\nCheck out the [Learning Guide](https://tina.io/docs/beginner-tutorials/tutorial-overview) it covers all you need to get up and running with TinaCMS.\n\n## Requirements\n\n* Git\n* [Node.js Active LTS](https://nodejs.org/en/about/releases/)\n* NPM, Yarn, pnpm, or bun\n\n## Install\n\nInstall the project's dependencies:\n\n<scriptCopyBlock\n  codeLanguage=\"bash\"\n  lightTheme=\"catppuccin-latte\"\n  darkTheme=\"catppuccin-mocha\"\n  commandMap=\"npm|npm install\n  pnpm|pnpm install\n  yarn|yarn install\n  bun|bun install\"\n/>\n\n## Run the project locally\n\nTo run the local development server:\n\n<scriptCopyBlock\n  codeLanguage=\"bash\"\n  lightTheme=\"catppuccin-latte\"\n  darkTheme=\"catppuccin-mocha\"\n  commandMap=\"npm|npm run dev\n  pnpm|pnpm run dev\n  yarn|yarn dev\n  bun|bun run dev\"\n/>\n\nThis command starts the GraphQL server and the Next.js application in development mode. It also regenerates your schema types for TypeScript and GraphQL so changes to your `/tina/config.ts` are reflected immediately.\n\nOne of the most interesting aspects of the TinaCloud Content API is that it doesn't actually require anything from the cloud to work locally. Since TinaCMS is by default a Git-backed CMS, everything can be run from your local filesystem via the CLI. \U0001F60E\n\nThis is ideal for development workflows and the API is identical to the one used in TinaCloud, so once you're ready to deploy your application you won't face any challenges there.\n\nOpen [`http://localhost:3000`](http://localhost:3000) in your browser to see your file-based content being loaded from the GraphQL API.\n\nWant to learn more? Go through the [Learning Guide](https://tina.io/docs/beginner-tutorials/tutorial-overview) to understand how to customise your TinaCMS experience.\n\n## Connect to Tina Cloud\n\nWhile the fully-local development workflow is the recommended way for developers to work,\nyou'll obviously want other editors and collaborators to be able to make changes on a hosted website with authentication.\n\nCheck out the docs on how to connect to our hosted backend - [Going to Production with TinaCloud](https://tina.io/docs/tina-cloud/overview)\n\n## Deploy\n\nSites using TinaCMS and TinaCloud can be deployed to lots of hosting providers.\n\nWe have documented some of the popular ones:\n\n* [Vercel](https://tina.io/docs/tina-cloud/deployment-options/vercel)\n* [Netlify](https://tina.io/docs/tina-cloud/deployment-options/netlify)\n* [GitHub Pages](https://tina.io/docs/tina-cloud/deployment-options/github-pages)\n* [Alibaba Cloud](https://tina.io/docs/tina-cloud/deployment-options/alibaba-cloud)\n\nIf your favourite isn't listed here, it doesn't mean that it isn't supported - we just don't have documentation for it yet.\n\n***\n\n## Getting Help\n\nYou might face issues, want to provide feedback or get help with any challenges you may have:\n\n* Read the [TinaCloud documentation](https://tina.io/docs/tina-cloud/).\n* [Join our Discord](https://discord.gg/zumN63Ybpf).\n* Visit the [community forum](https://community.tinacms.org/) to ask questions.\n* Reach out to us on Twitter at [@TinaCMS](https://x.com/tinacms).\n* [Email us](mailto\\:support@tina.io) to schedule a call with our team and share more about your context and what you're trying to achieve.\n\n## LICENSE\n\nLicensed under the [Apache 2.0 license](./LICENSE).\n"
-    _template: content
----
+aboutImage: /uploads/about_stoel.jpg
+aboutBadge: /uploads/bloktafel_3.jpg
+aboutEnglish: |-
+  I'm Kristian, the founder and maker behind Studio Phazant.
+  Making has been a constant throughout my life. From building toys as a child to designing furniture today.
+  Creating has always been a natural way for me to turn ideas into tangible objects.
+  Over time, that creative drive evolved into a deeper belief about what design should be and the responsibility that comes with it.
+  Every object we create leaves an impact on the world around us, and I believe good design should add value to our lives without placing unnecessary strain on the environment.
 
+  I started Studio Phazant with the idea that furniture should be made thoughtfully, honestly and with respect for the materials it's made from.
+  I work with reclaimed and locally sourced wood, reducing unnecessary transport while supporting responsible forestry.
+  Making use of materials that are both environmentally responsible and connected to their place of origin, allows each piece to reflect the unique character and history of the material.
+
+  The studio creates furniture, interiors and objects that celebrate craftsmanship, timeless design and the beauty of natural materials. Rather than following trends, every project is guided by longevity — creating pieces that are meant to be lived with, repaired and passed on.
+
+  Whether you're looking for a bespoke piece for your home or seeking a creative partner for an interior project, Studio Phazant welcomes collaborations with private clients, architects and interior designers.
+  If you have an idea you'd like to explore, I'd be happy to hear from you.
+aboutDutch: |-
+  Ik ben Kristian, oprichter en maker achter Studio Phazant.
+  Maken is altijd een onderdeel van mijn leven geweest. Van het bouwen van speelgoed als kind tot het ontwerpen en vervaardigen van meubels vandaag de dag.
+  Het creëren van tastbare objecten is voor mij altijd een vanzelfsprekende manier geweest om mijn creativiteit te uiten.
+  In de loop der jaren groeide die creatieve drijfveer uit tot een bredere overtuiging over wat design zou moeten zijn en welke verantwoordelijkheid daarbij hoort. Elk object dat we maken heeft invloed op de wereld om ons heen.
+  Daarom geloof ik dat goed ontwerp waarde moet toevoegen aan ons dagelijks leven, zonder de omgeving onnodig te belasten.
+
+  Vanuit die visie heb ik Studio Phazant opgericht. Met het idee dat meubels met aandacht, eerlijkheid en respect voor het materiaal gemaakt moeten worden.
+  Ik werk met hergebruikt en lokaal gewonnen hout, waarmee onnodig transport wordt beperkt en verantwoord bosbeheer wordt ondersteund.
+  Door materialen te gebruiken die zowel duurzaam als lokaal verankerd zijn, krijgt ieder object een eigen karakter en draagt het de geschiedenis van het materiaal met zich mee.
+
+  Studio Phazant ontwerpt en maakt meubels, interieurs en objecten waarin vakmanschap, tijdloos ontwerp en de schoonheid van natuurlijke materialen samenkomen in het creëren van objecten die lang meegaan, gerepareerd kunnen worden en van generatie op generatie worden doorgegeven.
+
+  Of je nu op zoek bent naar een meubel op maat voor je woning of een creatieve partner zoekt voor een interieurproject, Studio Phazant werkt graag samen met particuliere opdrachtgevers, architecten en interieurontwerpers.
+  Heb je een idee dat je wilt verkennen? Dan kom ik graag met je in contact.
+---

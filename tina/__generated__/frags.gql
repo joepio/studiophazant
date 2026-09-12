@@ -1,5 +1,10 @@
 fragment ProjectParts on Project {
   __typename
+  workOrder
+  materials
+  availability
+  enquiry
+  galleryLayout
   title
   category
   description
@@ -12,6 +17,10 @@ fragment ProjectParts on Project {
 
 fragment PageParts on Page {
   __typename
+  aboutImage
+  aboutBadge
+  aboutEnglish
+  aboutDutch
   spotlightImage
   spotlightAlt
   spotlightVideo

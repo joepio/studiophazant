@@ -11,8 +11,8 @@ export function HomePageClient({ data, query, variables, furniture, projects }: 
   const featuredImages = home.featuredImages || [];
 
   const furnitureFeature = [
-    { ...furniture[0], imageUrl: featuredImages[0] || "/uploads/blokstoel_7.jpg" },
-    { ...furniture[2], imageUrl: featuredImages[1] || "/uploads/bloktafel_1.jpg" },
+    { ...furniture.find((project: { id: string }) => project.id === 'blokstoel'), imageUrl: featuredImages[0] || "/uploads/blokstoel_7.jpg" },
+    { ...furniture.find((project: { id: string }) => project.id === 'bloktafel'), imageUrl: featuredImages[1] || "/uploads/bloktafel_1.jpg" },
     {
       id: "bijzettafel",
       title: "Bijzettafel",

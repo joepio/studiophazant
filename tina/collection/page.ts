@@ -23,6 +23,10 @@ const Page: Collection = {
     },
   },
   fields: [
+    { type: 'image', name: 'aboutImage', label: 'About portrait' },
+    { type: 'image', name: 'aboutBadge', label: 'About wooden logo background' },
+    { type: 'string', name: 'aboutEnglish', label: 'About — English', ui: { component: 'textarea' } },
+    { type: 'string', name: 'aboutDutch', label: 'About — Nederlands', ui: { component: 'textarea' } },
     { type: 'image', name: 'spotlightImage', label: 'Highlighted project / video poster' },
     { type: 'string', name: 'spotlightAlt', label: 'Highlighted image description' },
     { type: 'string', name: 'spotlightVideo', label: 'Highlighted video URL (MP4 or WebM)', description: 'Leave empty to show the image. Video has playback controls.' },

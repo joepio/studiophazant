@@ -1195,6 +1195,10 @@ var Page = {
     }
   },
   fields: [
+    { type: "image", name: "aboutImage", label: "About portrait" },
+    { type: "image", name: "aboutBadge", label: "About wooden logo background" },
+    { type: "string", name: "aboutEnglish", label: "About \u2014 English", ui: { component: "textarea" } },
+    { type: "string", name: "aboutDutch", label: "About \u2014 Nederlands", ui: { component: "textarea" } },
     { type: "image", name: "spotlightImage", label: "Highlighted project / video poster" },
     { type: "string", name: "spotlightAlt", label: "Highlighted image description" },
     { type: "string", name: "spotlightVideo", label: "Highlighted video URL (MP4 or WebM)", description: "Leave empty to show the image. Video has playback controls." },
@@ -1275,6 +1279,11 @@ var Project = {
     }
   },
   fields: [
+    { type: "number", name: "workOrder", label: "Work page order" },
+    { type: "string", name: "materials", label: "Materials", ui: { component: "textarea" } },
+    { type: "string", name: "availability", label: "Availability / made to order" },
+    { type: "string", name: "enquiry", label: "Enquiry text", ui: { component: "textarea" } },
+    { type: "string", name: "galleryLayout", label: "Gallery layout", options: [{ value: "wide-left", label: "Wide lower image on left" }, { value: "wide-right", label: "Wide lower image on right" }] },
     {
       type: "string",
       name: "title",

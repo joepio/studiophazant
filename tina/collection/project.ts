@@ -11,6 +11,11 @@ const Project: Collection = {
     },
   },
   fields: [
+    { type: 'number', name: 'workOrder', label: 'Work page order' },
+    { type: 'string', name: 'materials', label: 'Materials', ui: { component: 'textarea' } },
+    { type: 'string', name: 'availability', label: 'Availability / made to order' },
+    { type: 'string', name: 'enquiry', label: 'Enquiry text', ui: { component: 'textarea' } },
+    { type: 'string', name: 'galleryLayout', label: 'Gallery layout', options: [{value: 'wide-left', label: 'Wide lower image on left'}, {value: 'wide-right', label: 'Wide lower image on right'}] },
     {
       type: "string",
       name: "title",
