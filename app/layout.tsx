@@ -22,6 +22,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://studiophazant.nl"),
   title: {
     default: "Studio Phazant | Maatwerk meubels in Noord-Holland",
     template: "%s | Studio Phazant",
