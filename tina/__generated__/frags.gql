@@ -33,10 +33,41 @@ fragment PageParts on Page {
   studioCopy
   heroImage
   featuredImages
-  taglineImages
-  taglineTitle
-  taglineFirst
-  taglineSecond
+  carouselItems {
+    __typename
+    image
+    alt
+    project {
+      ... on Project {
+        __typename
+        workOrder
+        materials
+        availability
+        enquiry
+        galleryLayout
+        title
+        category
+        description
+        imageUrl
+        gallery
+        color
+        span
+        featured
+      }
+      ... on Document {
+        _sys {
+          filename
+          basename
+          hasReferences
+          breadcrumbs
+          path
+          relativePath
+          extension
+        }
+        id
+      }
+    }
+  }
   blocks {
     __typename
     ... on PageBlocksHero {

@@ -168,6 +168,14 @@ type ProjectConnection implements Connection {
   edges: [ProjectConnectionEdges]
 }
 
+union PageCarouselItemsProject = Project
+
+type PageCarouselItems {
+  image: String!
+  alt: String!
+  project: PageCarouselItemsProject!
+}
+
 type PageBlocksHeroActionsIcon {
   name: String
   color: String
@@ -297,14 +305,21 @@ type Page implements Node & Document {
   studioCopy: String
   heroImage: String
   featuredImages: [String]
-  taglineImages: [String]
-  taglineTitle: String
-  taglineFirst: String
-  taglineSecond: String
+  carouselItems: [PageCarouselItems]
   blocks: [PageBlocks]
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
+}
+
+input PageCarouselItemsProjectFilter {
+  project: ProjectFilter
+}
+
+input PageCarouselItemsFilter {
+  image: ImageFilter
+  alt: StringFilter
+  project: PageCarouselItemsProjectFilter
 }
 
 input PageBlocksHeroActionsIconFilter {
@@ -462,10 +477,7 @@ input PageFilter {
   studioCopy: StringFilter
   heroImage: ImageFilter
   featuredImages: ImageFilter
-  taglineImages: ImageFilter
-  taglineTitle: StringFilter
-  taglineFirst: StringFilter
-  taglineSecond: StringFilter
+  carouselItems: PageCarouselItemsFilter
   blocks: PageBlocksFilter
 }
 
@@ -627,6 +639,12 @@ input ProjectMutation {
   featured: Boolean
 }
 
+input PageCarouselItemsMutation {
+  image: String
+  alt: String
+  project: String
+}
+
 input PageBlocksHeroActionsIconMutation {
   name: String
   color: String
@@ -765,10 +783,7 @@ input PageMutation {
   studioCopy: String
   heroImage: String
   featuredImages: [String]
-  taglineImages: [String]
-  taglineTitle: String
-  taglineFirst: String
-  taglineSecond: String
+  carouselItems: [PageCarouselItemsMutation]
   blocks: [PageBlocksMutation]
 }
 

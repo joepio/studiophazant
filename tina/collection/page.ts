@@ -49,28 +49,14 @@ const Page: Collection = {
       list: true,
     },
     {
-      type: 'image',
-      name: 'taglineImages',
-      label: 'Studio section images',
-      list: true,
-    },
-    {
-      type: 'string',
-      name: 'taglineTitle',
-      label: 'Studio section title',
-      ui: { component: 'textarea' },
-    },
-    {
-      type: 'string',
-      name: 'taglineFirst',
-      label: 'Studio section first paragraph',
-      ui: { component: 'textarea' },
-    },
-    {
-      type: 'string',
-      name: 'taglineSecond',
-      label: 'Studio section second paragraph',
-      ui: { component: 'textarea' },
+      type: 'object', name: 'carouselItems', label: 'Carousel photos', list: true,
+      description: 'Add, remove or reorder photos. Choose the project each photo links to.',
+      ui: { itemProps: (item) => ({ label: item?.alt || 'Carousel photo' }) },
+      fields: [
+        { type: 'image', name: 'image', label: 'Photo', required: true },
+        { type: 'string', name: 'alt', label: 'Image description', required: true },
+        { type: 'reference', name: 'project', label: 'Linked project', collections: ['project'], required: true },
+      ],
     },
     {
       type: 'object',

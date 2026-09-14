@@ -6,16 +6,20 @@ import { HomePageClient } from '@/components/portfolio/home-page-client';
 export default async function Home() {
   const projects = getAllProjects();
   const furniture = projects.filter((project) => project.category === 'furniture');
-  const home = getPage('home');
+  const home = getPage('home') as { carouselItems?: { image?: string; alt?: string; project?: string }[] };
+  const pageData = {
+    ...home,
+    carouselItems: home.carouselItems?.map((item) => {
+      const project = projects.find((project) => `content/projects/${project.id}.mdx` === item.project);
+      return { ...item, project: project ? { title: project.title, _sys: { filename: project.id } } : null };
+    }),
+  };
   const query = `
     query HomePage($relativePath: String!) {
       page(relativePath: $relativePath) {
         heroImage
         featuredImages
-        taglineImages
-        taglineTitle
-        taglineFirst
-        taglineSecond
+        carouselItems { image alt project { ... on Project { title _sys { filename } } } }
         spotlightImage
         spotlightAlt
         spotlightVideo
@@ -33,7 +37,7 @@ export default async function Home() {
   return (
     <SimpleLayout showSalesCta={false}>
       <HomePageClient
-        data={{ page: home }}
+        data={{ page: pageData }}
         query={query}
         variables={{ relativePath: 'home.mdx' }}
         furniture={furniture}

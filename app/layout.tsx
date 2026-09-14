@@ -1,28 +1,37 @@
 import React from "react";
 import { Metadata } from "next";
-import { Playfair_Display, DM_Sans, Caveat } from "next/font/google";
+import { DM_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import "@/styles.css";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
+const brandSerif = localFont({
+  src: [
+    { path: '../public/fonts/HV Fitzgerald Bold.woff2', weight: '400 700', style: 'normal' },
+    { path: '../public/fonts/HV Fitzgerald Bold Italic.woff2', weight: '400 700', style: 'italic' },
+  ],
   variable: "--font-serif",
+  display: 'block',
 });
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: 'block',
 });
 
-const caveat = Caveat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const brandScript = localFont({
+  src: [
+    { path: '../public/fonts/TheEditorialMethod.otf', weight: '400', style: 'normal' },
+    { path: '../public/fonts/TheEditorialMethodBold.otf', weight: '700', style: 'normal' },
+  ],
   variable: "--font-script",
+  display: 'block',
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://studiophazant.nl"),
+  icons: { icon: '/icon.svg', shortcut: '/icon.svg' },
   title: {
     default: "Studio Phazant | Maatwerk meubels in Noord-Holland",
     template: "%s | Studio Phazant",
@@ -47,7 +56,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(dmSans.variable, playfair.variable, caveat.variable)}
+      className={cn(dmSans.variable, brandSerif.variable, brandScript.variable)}
     >
       <body className="min-h-screen bg-background font-sans antialiased">
         {children}

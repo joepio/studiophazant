@@ -2,26 +2,23 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { tinaField } from "tinacms/dist/react";
 import { Monogram } from "./monogram";
 import styles from "./home-showcase.module.css";
 
 type Project = { id: string; title: string; imageUrl: string };
 type HomeContent = {
+  carouselItems?: { image?: string; alt?: string; project?: { title?: string; _sys?: { filename?: string } } | null }[];
   spotlightImage?: string; spotlightAlt?: string; spotlightVideo?: string;
   carouselTitle?: string; contactImage?: string; contactPortrait?: string;
   contactText?: string; contactLabel?: string; studioImage?: string; studioCopy?: string;
 };
 
 export function HomeShowcase({ home, projects }: { home: HomeContent; projects: Project[] }) {
-  const track = useRef<HTMLDivElement>(null);
-  const scroll = (direction: number) => {
-    const element = track.current;
-    if (element) element.scrollBy({ left: direction * element.clientWidth * 0.75,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
-  };
   const spotlight = home.spotlightImage || "/uploads/tafel_2.jpg";
+  const carousel = home.carouselItems == null
+    ? projects.map(project => ({image: project.imageUrl, alt: project.title, project: {title: project.title, _sys: {filename: project.id}}}))
+    : home.carouselItems;
   return (
     <div className={styles.showcase}>
       <section className={styles.spotlight} aria-label="Recently made at Studio Phazant">
@@ -34,28 +31,24 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
         )}
       </section>
 
-      <section className={styles.projects} aria-label="All projects">
-        <div ref={track} id="home-project-carousel" className={styles.track} tabIndex={0}
+      {carousel.length > 0 && <section className={styles.projects} aria-label="All projects">
+        <div id="home-project-carousel" className={styles.track} tabIndex={0}
           aria-label="Project carousel — scroll to explore">
-          {projects.map((project, index) => (
-            <div className={styles.projectPair} key={project.id}>
-              {index === Math.min(3, projects.length - 1) && (
+          {carousel.map((item, index) => (
+            <div className={styles.projectPair} key={index}>
+              {index === Math.min(3, carousel.length - 1) && (
                 <h2 className={`${styles.carouselTitle} font-script`}>
                   {home.carouselTitle || "Custom\nFurniture,\nInteriors,\nObjects."}
                 </h2>
               )}
-              <Link href={`/projects/${project.id}`} className={styles.project} aria-label={project.title}>
-                <Image src={project.imageUrl} alt={project.title} fill
+              {item.image && <Link href={item.project?._sys?.filename ? `/projects/${item.project._sys.filename}` : '/work'} className={styles.project} aria-label={item.alt || item.project?.title} data-tina-field={tinaField(item, 'image')}>
+                <Image src={item.image} alt={item.alt || item.project?.title || 'Studio Phazant project'} fill
                   sizes="(max-width: 600px) 30vw, 19vw" className={styles.cover} />
-              </Link>
+              </Link>}
             </div>
           ))}
         </div>
-        <div className={styles.controls}>
-          <button type="button" onClick={() => scroll(-1)} aria-label="Previous projects" aria-controls="home-project-carousel"><ArrowLeft size={19} /></button>
-          <button type="button" onClick={() => scroll(1)} aria-label="Next projects" aria-controls="home-project-carousel"><ArrowRight size={19} /></button>
-        </div>
-      </section>
+      </section>}
 
       <section id="contact" className={styles.contact} aria-label="Discuss your custom furniture project">
         <Image src={home.contactImage || "/uploads/achtergrond_1.jpg"} alt="" fill sizes="100vw" className={styles.cover} />
