@@ -11,7 +11,7 @@
   width: min(64%, 900px);
   aspect-ratio: 1.44;
   margin: 0 auto clamp(46px, 8vw, 116px);
-  border: 3px solid #55874a;
+  border: 6px solid #55874a;
   overflow: hidden;
 }
 .video {
@@ -28,9 +28,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  padding: clamp(12px, 2vw, 28px);
+  padding: clamp(8px, 1.25vw, 18px);
   color: #ffe28a;
-  font-size: clamp(22px, 3vw, 48px);
+  font-size: clamp(30px, 3.7vw, 62px);
   line-height: 0.9;
   text-shadow: 0 2px 8px rgb(0 0 0 / 0.32);
   pointer-events: none;
@@ -42,9 +42,10 @@
 .spotlightLabels span:nth-child(3),
 .spotlightLabels span:nth-child(4) {
   align-self: end;
+  transform: translateY(-12px);
 }
 .projects {
-  padding: clamp(8px, 1.5vw, 24px) 0 clamp(56px, 10vw, 156px);
+  padding: clamp(38px, 5vw, 88px) 0 clamp(82px, 12vw, 190px);
 }
 .projectStrip {
   display: flex;
@@ -91,6 +92,7 @@
 .contact {
   position: relative;
   isolation: isolate;
+  min-height: clamp(420px, 42vw, 780px);
 }
 .contact::after {
   content: "";
@@ -103,18 +105,22 @@
   z-index: -2;
 }
 .contactInner {
-  max-width: 1300px;
-  margin: auto;
+  width: 100%;
+  height: 100%;
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 6%;
-  align-items: center;
-  padding: clamp(28px, 6vw, 80px) 7%;
+  grid-template-columns: minmax(0, 1fr) clamp(340px, 27vw, 510px);
+  column-gap: 6.5%;
+  align-items: start;
+  padding: 0 6.4%;
 }
 .invitation {
+  position: relative;
+  align-self: start;
+  width: min(100%, 820px);
+  margin-top: clamp(75px, 13.5vw, 250px);
   color: #fffaf5;
-  font-size: clamp(23px, 4vw, 60px);
-  line-height: 1.15;
+  font-size: clamp(28px, 4.3vw, 76px);
+  line-height: 0.92;
 }
 .invitation h2 {
   font: inherit;
@@ -122,43 +128,53 @@
   margin: 0;
 }
 .invitation a {
-  display: block;
-  width: fit-content;
-  margin: 24px 0 0 auto;
+  position: absolute;
+  top: calc(100% + 26px);
+  left: clamp(180px, 30vw, 560px);
+  width: max-content;
+  margin: 0;
+  white-space: nowrap;
   text-decoration: underline;
-  text-underline-offset: 6px;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.15em;
 }
 .portrait {
   position: relative;
+  align-self: start;
+  margin-top: clamp(36px, 5.5vw, 100px);
   aspect-ratio: 1;
-  border: 2px solid #fffaf5;
+  border: 4px solid #fffaf5;
 }
 .studio {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1.85fr 1fr;
   gap: 10%;
   align-items: center;
-  width: min(70%, 980px);
-  padding: clamp(42px, 6vw, 88px) 0;
+  width: min(70%, 1300px);
+  padding: clamp(76px, 8vw, 118px) 0;
   margin: auto;
 }
 .studioIdentity {
   text-align: center;
 }
-.studioIdentity p {
-  font-size: clamp(10px, 1vw, 14px);
-  line-height: 1.6;
-  margin: 18px auto;
-  max-width: 220px;
+.studioIdentity > a:first-child {
+  display: inline-block;
+  transform: translateX(-14px) scale(1.12);
+  transform-origin: center bottom;
 }
-.studioIdentity > a:last-child {
-  font-size: 12px;
-  text-decoration: underline;
+.studioIdentity p {
+  max-width: 280px;
+  margin: 24px auto 0;
+  color: #55874a;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(14px, 1.12vw, 20px);
+  line-height: 1.28;
+  white-space: pre-line;
 }
 .workshop {
   position: relative;
   aspect-ratio: 1.4;
-  border: 2px solid #55874a;
+  border: 4px solid #55874a;
 }
 @media (max-width: 600px) {
   .spotlight {
@@ -179,14 +195,22 @@
     flex-basis: 28vw;
   }
   .contactInner {
+    height: auto;
+    grid-template-columns: 1.25fr 1fr;
     padding-inline: 6%;
     gap: 6%;
   }
   .invitation {
+    margin-top: 26vw;
     font-size: 5.3vw;
   }
   .invitation a {
-    margin-top: 16px;
+    top: calc(100% + 16px);
+    left: 28vw;
+  }
+  .portrait {
+    margin-top: 9vw;
+    border-width: 2px;
   }
   .studio {
     width: 85%;

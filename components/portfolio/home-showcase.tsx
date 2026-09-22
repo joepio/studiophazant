@@ -50,10 +50,10 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
           />
         )}
         <div className={`${styles.spotlightLabels} font-script`} aria-hidden='true'>
-          <span>Custom</span>
+          <span>"Custom</span>
           <span>Furniture,</span>
           <span>Interiors,</span>
-          <span>Objects</span>
+          <span>Objects"</span>
         </div>
       </section>
 
@@ -119,9 +119,6 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
           <p className='font-ui-sans'>
             {home.studioCopy || 'Meubelmaker in Noord-Holland. Maatwerk meubels, interieurs en objecten, met aandacht voor vakmanschap en duurzaam hout.'}
           </p>
-          <a className='font-ui-sans' href='mailto:info@studiophazant.nl'>
-            Get in touch
-          </a>
         </div>
       </footer>
     </div>
