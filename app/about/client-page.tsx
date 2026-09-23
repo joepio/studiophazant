@@ -21,6 +21,6 @@ export function AboutPageClient({data, query, variables}: any) {
       {(copy || '').split('\n\n').filter(Boolean).map((paragraph: string, i: number) => <p key={i}>{paragraph}</p>)}
       <a className="underline underline-offset-4" href="mailto:info@studiophazant.nl">{language === 'en' ? 'Get in touch' : 'Neem contact op'}</a>
     </div>
-    <div className={styles.aboutBadge}><Image src={page.aboutBadge || '/uploads/bloktafel_3.jpg'} alt="" fill sizes="235px" className="object-cover" /><Monogram withText={false} size="xl" color="#ffe28a" /></div>
+    <div className={styles.aboutBadge}><Monogram withText={false} size="xl" color="#55874a" /></div>
   </article>;
 }
