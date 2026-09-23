@@ -50,12 +50,23 @@
 .projectStrip {
   display: flex;
   width: 100%;
-  gap: clamp(12px, 2.4vw, 42px);
+  gap: clamp(24px, 4vw, 72px);
   overflow-x: auto;
   padding: 4px 2.2%;
   scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: #55874a transparent;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+}
+.projectStrip::-webkit-scrollbar {
+  display: none;
+}
+.projectStrip a {
+  cursor: grab;
+}
+.projectStrip[data-dragging='true'],
+.projectStrip[data-dragging='true'] a {
+  cursor: grabbing;
 }
 .project {
   position: relative;

@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { tinaField } from 'tinacms/dist/react';
@@ -22,11 +23,132 @@ type HomeContent = {
 };
 
 export function HomeShowcase({ home, projects }: { home: HomeContent; projects: Project[] }) {
+  const projectStripRef = useRef<HTMLDivElement>(null);
   const spotlight = home.spotlightImage || '/uploads/tafel_2.jpg';
   const carousel =
     home.carouselItems == null
       ? projects.map((project) => ({ image: project.imageUrl, alt: project.title, project: { title: project.title, _sys: { filename: project.id } } }))
       : home.carouselItems;
+
+  useEffect(() => {
+    const strip = projectStripRef.current;
+    if (!strip) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+    let frame = 0;
+    let previousTime = 0;
+    let pointerPosition = 0.5;
+    let hovering = false;
+    let pressed = false;
+    let dragging = false;
+    let pressX = 0;
+    let pressScroll = 0;
+    let suppressClick = false;
+    let clickTimer = 0;
+
+    const drift = (time: number) => {
+      if (!hovering || pressed || reducedMotion.matches || !canHover.matches) return;
+
+      const maxScroll = strip.scrollWidth - strip.clientWidth;
+      if (maxScroll <= 0) return;
+
+      const elapsed = previousTime ? Math.min(time - previousTime, 50) : 0;
+      previousTime = time;
+      const speed = 18 + (pointerPosition - 0.5) * 180;
+      strip.scrollLeft = Math.max(0, Math.min(maxScroll, strip.scrollLeft + speed * elapsed / 1000));
+      frame = window.requestAnimationFrame(drift);
+    };
+
+    const updatePointerPosition = (event: MouseEvent | PointerEvent) => {
+      const bounds = strip.getBoundingClientRect();
+      pointerPosition = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+    };
+    const start = (event: MouseEvent) => {
+      if (reducedMotion.matches || !canHover.matches) return;
+      updatePointerPosition(event);
+      hovering = true;
+      strip.style.scrollSnapType = 'none';
+      previousTime = 0;
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(drift);
+    };
+    const stop = () => {
+      hovering = false;
+      window.cancelAnimationFrame(frame);
+      if (!dragging) {
+        pressed = false;
+        strip.style.scrollSnapType = '';
+      }
+    };
+    const pointerDown = (event: PointerEvent) => {
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      pressed = true;
+      dragging = false;
+      pressX = event.clientX;
+      pressScroll = strip.scrollLeft;
+      strip.style.scrollSnapType = 'none';
+      window.cancelAnimationFrame(frame);
+    };
+    const pointerMove = (event: PointerEvent) => {
+      updatePointerPosition(event);
+      if (!pressed) return;
+      const distance = event.clientX - pressX;
+      if (!dragging && Math.abs(distance) > 5) {
+        dragging = true;
+        strip.dataset.dragging = 'true';
+        strip.setPointerCapture(event.pointerId);
+      }
+      if (dragging) {
+        strip.scrollLeft = pressScroll - distance;
+        event.preventDefault();
+      }
+    };
+    const pointerUp = (event: PointerEvent) => {
+      if (!pressed) return;
+      pressed = false;
+      if (dragging) {
+        suppressClick = true;
+        window.clearTimeout(clickTimer);
+        clickTimer = window.setTimeout(() => { suppressClick = false; }, 0);
+        dragging = false;
+        delete strip.dataset.dragging;
+        if (strip.hasPointerCapture(event.pointerId)) strip.releasePointerCapture(event.pointerId);
+      }
+      if (!hovering) strip.style.scrollSnapType = '';
+      if (hovering) {
+        previousTime = 0;
+        frame = window.requestAnimationFrame(drift);
+      }
+    };
+    const preventDraggedClick = (event: MouseEvent) => {
+      if (!suppressClick) return;
+      event.preventDefault();
+      event.stopPropagation();
+      suppressClick = false;
+    };
+
+    strip.addEventListener('mouseenter', start);
+    strip.addEventListener('mouseleave', stop);
+    strip.addEventListener('pointerdown', pointerDown);
+    strip.addEventListener('pointermove', pointerMove);
+    strip.addEventListener('pointerup', pointerUp);
+    strip.addEventListener('pointercancel', pointerUp);
+    strip.addEventListener('click', preventDraggedClick, true);
+    return () => {
+      stop();
+      window.clearTimeout(clickTimer);
+      delete strip.dataset.dragging;
+      strip.removeEventListener('mouseenter', start);
+      strip.removeEventListener('mouseleave', stop);
+      strip.removeEventListener('pointerdown', pointerDown);
+      strip.removeEventListener('pointermove', pointerMove);
+      strip.removeEventListener('pointerup', pointerUp);
+      strip.removeEventListener('pointercancel', pointerUp);
+      strip.removeEventListener('click', preventDraggedClick, true);
+    };
+  }, [carousel.length]);
+
   return (
     <div className={styles.showcase}>
       <section className={styles.spotlight} aria-label='Recently made at Studio Phazant'>
@@ -59,7 +181,7 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
 
       {carousel.length > 0 && (
         <section className={styles.projects} aria-label='Project slider'>
-          <div className={styles.projectStrip} tabIndex={0} aria-label='Project slider — scroll to explore'>
+          <div ref={projectStripRef} className={styles.projectStrip} tabIndex={0} aria-label='Project slider — scroll or drag to explore'>
             {carousel.map((item, index) =>
               item.image ? (
                 <Link
@@ -68,6 +190,7 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
                   key={index}
                   aria-label={item.alt || item.project?.title}
                   data-tina-field={tinaField(item, 'image')}
+                  draggable={false}
                 >
                   <Image
                     src={item.image}
@@ -75,6 +198,7 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
                     fill
                     sizes='(max-width: 700px) 28vw, 18vw'
                     className={styles.cover}
+                    draggable={false}
                   />
                 </Link>
               ) : null
