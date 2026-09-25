@@ -6,13 +6,45 @@
 .cover {
   object-fit: cover;
 }
+.feature {
+  width: 100%;
+}
+.featureTitle {
+  margin: 0;
+  padding: clamp(10px, 1.5vw, 24px) 12px clamp(8px, 1.3vw, 20px);
+  background: #55874a;
+  color: #bedfe3;
+  font-size: clamp(28px, 4.3vw, 68px);
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+}
+.featureTitle span {
+  position: relative;
+  top: -4px;
+}
+.featurePanel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 42.5vw;
+  padding: 5.1vw 0 6.1vw;
+  background: #f3e7d0;
+}
 .spotlight {
   position: relative;
-  width: min(64%, 900px);
+  width: 45%;
   aspect-ratio: 1.44;
-  margin: 0 auto clamp(46px, 8vw, 116px);
-  border: 6px solid #55874a;
+  margin-left: 28.6%;
   overflow: hidden;
+}
+.featureIllustration {
+  position: absolute;
+  right: 12.8%;
+  bottom: 12.5%;
+  width: 10.5%;
+  height: auto;
+  mix-blend-mode: multiply;
 }
 .video {
   display: block;
@@ -20,29 +52,6 @@
   height: 100%;
   object-fit: contain;
   background: #1c321e;
-}
-.spotlightLabels {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  padding: clamp(8px, 1.25vw, 18px);
-  color: #ffe28a;
-  font-size: clamp(30px, 3.7vw, 62px);
-  line-height: 0.9;
-  text-shadow: 0 2px 8px rgb(0 0 0 / 0.32);
-  pointer-events: none;
-}
-.spotlightLabels span:nth-child(2),
-.spotlightLabels span:nth-child(4) {
-  text-align: right;
-}
-.spotlightLabels span:nth-child(3),
-.spotlightLabels span:nth-child(4) {
-  align-self: end;
-  transform: translateY(-12px);
 }
 .projects {
   padding: clamp(38px, 5vw, 88px) 0 clamp(82px, 12vw, 190px);
@@ -182,43 +191,70 @@
   border-color: #bedfe3;
 }
 .studio {
+  --studio-padding-top: clamp(40px, 5.5vw, 95px);
+  --studio-padding-bottom: clamp(42px, 6vw, 105px);
+  position: relative;
   display: grid;
-  grid-template-columns: 1.85fr 1fr;
-  gap: 10%;
-  align-items: center;
-  width: min(70%, 1300px);
-  padding: clamp(76px, 8vw, 118px) 0;
-  margin: auto;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  width: 100%;
+  padding: var(--studio-padding-top) 0 var(--studio-padding-bottom) 15%;
+}
+.studio::before {
+  content: "";
+  position: absolute;
+  inset: var(--studio-padding-top) 0 var(--studio-padding-bottom);
+  background: #55874a;
 }
 .studioIdentity {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(8px, 1.4vw, 24px) 2.1vw;
+  background: #55874a;
   text-align: center;
 }
 .studioIdentity > a:first-child {
-  display: inline-block;
-  transform: translateX(-14px) scale(1.12);
-  transform-origin: center bottom;
+  display: flex;
+  justify-content: center;
+  width: clamp(95px, 13vw, 220px);
+  transform: translateX(-16px);
+}
+.studioLogo > span {
+  height: clamp(48px, 7vw, 100px);
 }
 .studioIdentity p {
-  max-width: 280px;
-  margin: 24px auto 0;
-  color: #55874a;
+  width: clamp(95px, 13vw, 220px);
+  margin: clamp(8px, 1.5vw, 24px) 0 0;
+  color: #ffe28a;
   font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(14px, 1.12vw, 20px);
-  line-height: 1.28;
+  font-size: clamp(7px, 0.82vw, 14px);
+  line-height: 1.14;
   white-space: pre-line;
 }
 .workshop {
   position: relative;
-  aspect-ratio: 1.4;
+  z-index: 1;
+  aspect-ratio: 1.84;
   border: 4px solid #55874a;
 }
 @media (max-width: 600px) {
-  .spotlight {
-    width: 82%;
-    border-width: 2px;
+  .featureTitle {
+    font-size: clamp(18px, 4vw, 28px);
   }
-  .spotlightLabels {
-    font-size: 6vw;
+  .featurePanel {
+    min-height: 49vw;
+  }
+  .spotlight {
+    width: 60%;
+    margin-left: 11%;
+  }
+  .featureIllustration {
+    width: 17%;
+    right: 7%;
   }
   .project {
     min-width: 28vw;
@@ -253,12 +289,25 @@
     border-width: 2px;
   }
   .studio {
-    width: 85%;
     grid-template-columns: 1fr;
-    gap: 32px;
+    padding-inline: 7.5%;
   }
   .studioIdentity {
-    grid-row: 2;
+    align-items: center;
+    padding: 30px 24px;
+  }
+  .studioIdentity > a:first-child,
+  .studioIdentity p {
+    width: min(100%, 260px);
+  }
+  .studioIdentity > a:first-child {
+    transform: none;
+  }
+  .studioIdentity p {
+    font-size: 12px;
+  }
+  .studioLogo > span {
+    height: 60px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

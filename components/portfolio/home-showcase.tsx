@@ -151,31 +151,38 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
 
   return (
     <div className={styles.showcase}>
-      <section className={styles.spotlight} aria-label='Recently made at Studio Phazant'>
-        {home.spotlightVideo ? (
-          <video
-            className={styles.video}
-            controls
-            playsInline
-            preload='none'
-            poster={spotlight}
-            src={home.spotlightVideo}
-            aria-label={home.spotlightAlt || 'Highlighted project'}
-          />
-        ) : (
+      <section className={styles.feature} aria-label='Recently made at Studio Phazant'>
+        <h2 className={`${styles.featureTitle} font-script`}><span>"Custom Furniture, Interiors, and Objects"</span></h2>
+        <div className={styles.featurePanel}>
+          <div className={styles.spotlight}>
+            {home.spotlightVideo ? (
+              <video
+                className={styles.video}
+                controls
+                playsInline
+                preload='none'
+                poster={spotlight}
+                src={home.spotlightVideo}
+                aria-label={home.spotlightAlt || 'Highlighted project'}
+              />
+            ) : (
+              <Image
+                src={spotlight}
+                alt={home.spotlightAlt || 'Handmade wooden table by Studio Phazant'}
+                fill
+                sizes='(max-width: 600px) 60vw, 45vw'
+                className={styles.cover}
+              />
+            )}
+          </div>
           <Image
-            src={spotlight}
-            alt={home.spotlightAlt || 'Handmade wooden table by Studio Phazant'}
-            fill
-            sizes='(min-width: 1440px) 1100px, 78vw'
-            className={styles.cover}
+            src='/uploads/phazant-chair-illustration.jpg'
+            alt=''
+            aria-hidden='true'
+            width={575}
+            height={771}
+            className={styles.featureIllustration}
           />
-        )}
-        <div className={`${styles.spotlightLabels} font-script`} aria-hidden='true'>
-          <span>"Custom</span>
-          <span>Furniture,</span>
-          <span>Interiors,</span>
-          <span>Objects"</span>
         </div>
       </section>
 
@@ -242,7 +249,7 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
         </div>
         <div className={styles.studioIdentity}>
           <Link href='/' aria-label='Studio Phazant home'>
-            <Monogram size='xl' withText={false} />
+            <Monogram className={styles.studioLogo} size='xl' withText={false} color='#ffe28a' />
           </Link>
           <p className='font-ui-sans'>
             {home.studioCopy || 'Meubelmaker in Noord-Holland. Maatwerk meubels, interieurs en objecten, met aandacht voor vakmanschap en duurzaam hout.'}
