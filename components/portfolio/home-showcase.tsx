@@ -211,10 +211,14 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
         <Image src={home.contactImage || '/uploads/achtergrond_1.jpg'} alt='' fill sizes='100vw' className={styles.cover} />
         <div className={styles.contactInner}>
           <div className={`${styles.invitation} font-script`}>
-            <h2>{home.contactText || 'Have an idea, a question\nor a project in mind?'}</h2>
+            <h2>
+              {(home.contactText || 'Have an idea, a question\nor a project in mind?').split('\n').map((line, index) => (
+                <span className={styles.invitationLine} key={`${index}-${line}`}>{line}</span>
+              ))}
+            </h2>
             <a href='mailto:info@studiophazant.nl'>{home.contactLabel || "Let's talk"}</a>
           </div>
-          <div className={styles.portrait}>
+          <Link href='/about' className={styles.portrait}>
             <Image
               src={home.contactPortrait || '/uploads/about_stoel.jpg'}
               alt='Kristian Kodde of Studio Phazant'
@@ -222,7 +226,7 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
               sizes='(max-width: 600px) 30vw, 28vw'
               className={styles.cover}
             />
-          </div>
+          </Link>
         </div>
       </section>
 

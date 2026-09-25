@@ -135,8 +135,20 @@
 }
 .invitation h2 {
   font: inherit;
-  white-space: pre-line;
+  font-size: min(1em, 65px);
   margin: 0;
+}
+.invitationLine {
+  display: block;
+}
+.invitationLine + .invitationLine {
+  margin-top: 12px;
+}
+.invitationLine:first-child {
+  transform: translateX(-60px);
+}
+.invitationLine:nth-child(2) {
+  transform: translateX(55px);
 }
 .invitation a {
   position: absolute;
@@ -149,12 +161,25 @@
   text-decoration-thickness: 3px;
   text-underline-offset: 0.15em;
 }
+.invitation a:hover,
+.invitation a:focus-visible {
+  color: #bedfe3;
+}
 .portrait {
   position: relative;
+  display: block;
   align-self: start;
   margin-top: clamp(36px, 5.5vw, 100px);
   aspect-ratio: 1;
   border: 4px solid #fffaf5;
+  transition: border-color 180ms ease;
+}
+.portrait img {
+  object-position: 80% center;
+}
+.portrait:hover,
+.portrait:focus-visible {
+  border-color: #bedfe3;
 }
 .studio {
   display: grid;
@@ -215,6 +240,10 @@
     margin-top: 26vw;
     font-size: 5.3vw;
   }
+  .invitationLine:first-child,
+  .invitationLine:nth-child(2) {
+    transform: none;
+  }
   .invitation a {
     top: calc(100% + 16px);
     left: 28vw;
@@ -234,6 +263,9 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .project img {
+    transition: none;
+  }
+  .portrait {
     transition: none;
   }
 }
