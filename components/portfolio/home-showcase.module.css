@@ -1,4 +1,5 @@
 .showcase {
+  --section-blank-space: clamp(82px, 12vw, 190px);
   background: #fffaf5;
   color: #55874a;
   padding-top: clamp(36px, 9vw, 144px);
@@ -54,7 +55,7 @@
   background: #1c321e;
 }
 .projects {
-  padding: clamp(38px, 5vw, 88px) 0 clamp(82px, 12vw, 190px);
+  padding: var(--section-blank-space) 0;
 }
 .projectStrip {
   display: flex;
@@ -191,7 +192,7 @@
   border-color: #bedfe3;
 }
 .studio {
-  --studio-padding-top: clamp(40px, 5.5vw, 95px);
+  --studio-padding-top: calc(var(--section-blank-space) + 4px + var(--studio-green-extension));
   --studio-padding-bottom: clamp(42px, 6vw, 105px);
   --studio-green-extension: clamp(16px, 2.5vw, 40px);
   --studio-content-offset: 85px;
