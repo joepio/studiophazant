@@ -24,7 +24,7 @@ type HomeContent = {
 
 export function HomeShowcase({ home, projects }: { home: HomeContent; projects: Project[] }) {
   const projectStripRef = useRef<HTMLDivElement>(null);
-  const spotlight = home.spotlightImage || '/uploads/tafel_2.jpg';
+  const spotlight = home.spotlightImage || '/uploads/home-record-cabinet.png';
   const carousel =
     home.carouselItems == null
       ? projects.map((project) => ({ image: project.imageUrl, alt: project.title, project: { title: project.title, _sys: { filename: project.id } } }))
@@ -152,7 +152,6 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
   return (
     <div className={styles.showcase}>
       <section className={styles.feature} aria-label='Recently made at Studio Phazant'>
-        <h2 className={`${styles.featureTitle} font-script`}><span>"Custom Furniture, Interiors, and Objects"</span></h2>
         <div className={styles.featurePanel}>
           <div className={styles.spotlight}>
             {home.spotlightVideo ? (
@@ -168,21 +167,19 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
             ) : (
               <Image
                 src={spotlight}
-                alt={home.spotlightAlt || 'Handmade wooden table by Studio Phazant'}
+                alt={home.spotlightAlt || 'Custom wooden record cabinet by Studio Phazant'}
                 fill
-                sizes='(max-width: 600px) 60vw, 45vw'
+                sizes='(max-width: 600px) 90vw, 55vw'
                 className={styles.cover}
               />
             )}
+            <h2 className={`${styles.featureTitle} font-script`} aria-label='Custom furniture, interiors, and objects'>
+              <span aria-hidden='true'>"Custom</span>
+              <span aria-hidden='true'>Furniture,</span>
+              <span aria-hidden='true'>Interiors,</span>
+              <span aria-hidden='true'>Objects"</span>
+            </h2>
           </div>
-          <Image
-            src='/uploads/phazant-chair-illustration.jpg'
-            alt=''
-            aria-hidden='true'
-            width={575}
-            height={771}
-            className={styles.featureIllustration}
-          />
         </div>
       </section>
 
