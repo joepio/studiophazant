@@ -8,6 +8,7 @@ interface PortfolioItem {
   title: string;
   category: string;
   imageUrl: string;
+  imageFrame?: { x: number; y: number; width: number; height: number };
 }
 
 interface PortfolioSectionProps {
@@ -111,16 +112,17 @@ export function PortfolioSection({ id, title, projects, compact = false, fullBle
                         />
                       </clipPath>
                     </defs>
-                    <image
-                      href={item.imageUrl}
-                      x="0"
-                      y="0"
-                      width="1467"
-                      height="1458"
-                      preserveAspectRatio="xMidYMid slice"
-                      clipPath={`url(#organic-${item.id}-${i})`}
-                      className="portfolio-tile__image"
-                    />
+                    <g clipPath={`url(#organic-${item.id}-${i})`}>
+                      <image
+                        href={item.imageUrl}
+                        x={item.imageFrame?.x ?? 0}
+                        y={item.imageFrame?.y ?? 0}
+                        width={item.imageFrame?.width ?? 1467}
+                        height={item.imageFrame?.height ?? 1458}
+                        preserveAspectRatio="xMidYMid slice"
+                        className="portfolio-tile__image"
+                      />
+                    </g>
                   </svg>
                 )
               ) : (

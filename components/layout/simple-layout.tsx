@@ -15,8 +15,10 @@ const navLinks = [
 
 function DesktopNavList({
   items,
+  linkClassName,
 }: {
   items: { label: string; href: string }[];
+  linkClassName: string;
 }) {
   return (
     <ul className='flex items-center gap-3 lg:gap-5 font-ui-sans text-[10px] lg:text-xs uppercase tracking-[0.22em]'>
@@ -24,7 +26,7 @@ function DesktopNavList({
         <React.Fragment key={item.href}>
           {i > 0 && <li aria-hidden className='w-px h-3 bg-current opacity-70 self-center rotate-[20deg]' />}
           <li>
-            <Link href={item.href} className='hover:opacity-70 transition-opacity'>
+            <Link href={item.href} className={linkClassName}>
               {item.label}
             </Link>
           </li>
@@ -36,6 +38,9 @@ function DesktopNavList({
 
 export function SimpleLayout({ children, showSalesCta = true, editorial = false }: { children: React.ReactNode; showSalesCta?: boolean; editorial?: boolean }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const navLinkClassName = editorial
+    ? 'hover:opacity-70 transition-opacity'
+    : 'hover:text-[#bedfe3] focus-visible:text-[#bedfe3] transition-colors';
 
   React.useEffect(() => {
     if (menuOpen) {
@@ -73,7 +78,7 @@ export function SimpleLayout({ children, showSalesCta = true, editorial = false 
           <Link href='/' aria-label='Studio Phazant home' className='shrink-0 opacity-90'>
             <Monogram size='xl' withText={false} color={editorial ? '#55874a' : '#ffe28a'} />
           </Link>
-          <DesktopNavList items={navLinks} />
+          <DesktopNavList items={navLinks} linkClassName={navLinkClassName} />
         </nav>
       </header>
 
@@ -100,7 +105,7 @@ export function SimpleLayout({ children, showSalesCta = true, editorial = false 
           <ul className='flex flex-col items-center gap-6 font-serif italic text-[#4b7f4a] text-3xl'>
             {navLinks.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} onClick={() => setMenuOpen(false)} className='hover:opacity-70 transition-opacity'>
+                <Link href={item.href} onClick={() => setMenuOpen(false)} className={navLinkClassName}>
                   {item.label}
                 </Link>
               </li>
