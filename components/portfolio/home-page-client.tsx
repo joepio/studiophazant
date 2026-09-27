@@ -32,7 +32,7 @@ export function HomePageClient({ data, query, variables, furniture, projects }: 
 
   return (
     <>
-      <Hero imageSrc={home.heroImage || "/uploads/stoelen_4.jpg"} />
+      <Hero imageSrc={home.heroImage || "/uploads/home-hero-p9030024.jpg"} />
       <PortfolioSection id="work" title="Furniture" projects={furnitureFeature} compact />
       <HomeShowcase home={home} projects={projects} />
     </>
