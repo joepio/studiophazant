@@ -7,14 +7,14 @@ export function Hero({ imageSrc = "/uploads/home-hero-p9030024.jpg", imageAlt = 
 }) {
   return (
     <section className="w-full">
-      <div className="@container relative min-h-[max(calc(90svh-10px),60vw)] overflow-hidden bg-[#1c321e]">
+      <div className="@container relative h-[98svh] overflow-hidden bg-[#1c321e]">
         <Image
           src={imageSrc}
           alt={imageAlt}
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[60%_78%]"
+          className="object-cover object-[60%_60%]"
         />
         <div className="absolute inset-0 bg-black/20" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
