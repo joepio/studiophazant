@@ -173,11 +173,13 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
                 className={styles.cover}
               />
             )}
-            <h2 className={`${styles.featureTitle} font-script`} aria-label='Custom furniture, interiors, and objects'>
-              <span aria-hidden='true'>"Custom</span>
-              <span aria-hidden='true'>Furniture,</span>
-              <span aria-hidden='true'>Interiors,</span>
-              <span aria-hidden='true'>Objects"</span>
+            <h2 className={`${styles.featureTitle} font-script`}>
+              <Link href='/work' className={styles.featureTitleLink} aria-label='Custom furniture, interiors, and objects — view our work'>
+                <span aria-hidden='true'>"Custom</span>
+                <span aria-hidden='true'>Furniture,</span>
+                <span aria-hidden='true'>Interiors,</span>
+                <span aria-hidden='true'>Objects"</span>
+              </Link>
             </h2>
           </div>
         </div>

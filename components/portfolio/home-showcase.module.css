@@ -21,9 +21,25 @@
   line-height: 1;
   pointer-events: none;
 }
+.featureTitleLink {
+  position: absolute;
+  inset: 0;
+  color: inherit;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+.featureTitleLink:hover,
+.featureTitleLink:focus-visible {
+  color: #ffe28a;
+}
+.featureTitleLink:focus-visible {
+  outline: 2px solid #ffe28a;
+  outline-offset: -4px;
+}
 .featureTitle span {
   position: absolute;
   white-space: nowrap;
+  pointer-events: auto;
 }
 .featureTitle span:nth-child(1) {
   top: 4%;
