@@ -24,7 +24,7 @@ type HomeContent = {
 
 export function HomeShowcase({ home, projects }: { home: HomeContent; projects: Project[] }) {
   const projectStripRef = useRef<HTMLDivElement>(null);
-  const spotlight = home.spotlightImage || '/uploads/home-record-cabinet.png';
+  const spotlight = home.spotlightImage || '/uploads/home-cabinet-blue-pot-rug.png';
   const carousel =
     home.carouselItems == null
       ? projects.map((project) => ({ image: project.imageUrl, alt: project.title, project: { title: project.title, _sys: { filename: project.id } } }))
