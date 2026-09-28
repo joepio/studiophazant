@@ -39,6 +39,14 @@
 .galleryImage:nth-child(5) { grid-column: span 8; aspect-ratio: auto; }
 .wideLeft .galleryImage:nth-child(4) { grid-column: span 7; aspect-ratio: 4/3; }
 .wideLeft .galleryImage:nth-child(5) { grid-column: span 5; }
+.kubeGallery { width: min(76%, 1280px); margin: 0 auto 100px; display: grid; gap: clamp(24px, 2.8vw, 48px); }
+.kubeTopRow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.75fr); gap: clamp(18px, 3.5vw, 64px); align-items: start; }
+.kubeTopRow .projectInfo { grid-column: auto; font-size: clamp(14px, 1.15vw, 19px); }
+.kubeBottomRow { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(18px, 3vw, 52px); }
+.kubeExtraRow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(18px, 3vw, 52px); }
+.kubeImage { position: relative; min-width: 0; overflow: hidden; }
+.kubeOverview, .kubeUpholstered { aspect-ratio: 1; }
+.kubePortrait { aspect-ratio: 3/4; }
 .about { padding-bottom: 90px; }
 .aboutHero { position: relative; aspect-ratio: 2.12; width: min(86%, 1320px); margin: 0 auto; border: 5px solid #bedfe3; }
 .language { display: flex; gap: 16px; justify-content: center; font-family: var(--font-sans), sans-serif; font-size: 12px; margin: 28px 0; }
@@ -49,6 +57,7 @@
 .aboutBadge { width: clamp(135px, 19vw, 235px); aspect-ratio: 1; margin: auto; display: grid; place-items: center; }
 .aboutBadge > span { position: relative; transform: translateX(-30px) scale(2.4); }
 @media (max-width: 900px) { .workGrid, .projectGallery { width: 88%; } .workInfo { padding: 9%; } }
+@media (max-width: 900px) { .kubeGallery { width: 88%; } }
 @media (max-width: 640px) {
  .workGrid { display: block; width: 90%; margin-bottom: 50px; }
  .workPair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -64,6 +73,11 @@
  .projectInfo { grid-column: 1/-1; padding: 0; margin-bottom: 10px; font-size: 15px; line-height: 1.4; }
  .projectGallery .galleryImage { grid-column: auto; aspect-ratio: 3/4; }
  .projectGallery .galleryImage:nth-child(5) { grid-column: 1/-1; aspect-ratio: 4/3; }
+ .kubeGallery { gap: 16px; margin-bottom: 50px; }
+ .kubeTopRow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+ .kubeTopRow .projectInfo { grid-column: 1/-1; padding: 0; font-size: 15px; line-height: 1.4; }
+ .kubeBottomRow, .kubeExtraRow { grid-template-columns: 1fr; gap: 16px; }
+ .kubeDetail { aspect-ratio: 4/3; }
  .aboutHero { width: 90%; aspect-ratio: 1.5; }
  .aboutCopy { width: 86%; line-height: 1.5; margin-top: 25px; }
 }
