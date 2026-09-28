@@ -12,7 +12,7 @@ export default async function WorkPage() {
     { id: 'loungestoelen', imageUrl: '/uploads/stoelen_6.jpg', imagePosition: 'center bottom', imageScale: 1.4 },
     { id: 'eettafel', imageUrl: '/uploads/tafel_1.jpg' },
     { id: 'lijst-klein', imageUrl: '/uploads/work-custom-frames-selected.jpg' },
-    { id: 'staande-lamp', imageUrl: '/uploads/lamp_hoog_1.jpg' },
+    { id: 'staande-lamp', imageUrl: '/uploads/work-lykt-floor-lamp.jpg', imageOffsetY: 40, imageAlignment: 'xMidYMin slice' },
     { id: 'kubuslamp', imageUrl: '/uploads/work-kube-table-lamp.jpg', imagePosition: '40% center' },
   ];
   const allProjects = new Map(getAllProjects().map((project) => [project.id, project]));
