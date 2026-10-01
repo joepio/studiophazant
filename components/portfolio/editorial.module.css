@@ -41,6 +41,13 @@
 .wideLeft .galleryImage:nth-child(5) { grid-column: span 5; }
 .cocktailGallery .galleryImage:nth-last-child(-n+2) { aspect-ratio: 3/4; }
 .cocktailGallery .galleryImage { overflow: hidden; }
+.projectGallery .primoImage { aspect-ratio: 3/4; }
+.projectGallery .primoImage:nth-child(2) { overflow: hidden; }
+.projectGallery .primoImage:nth-child(2) img { transform: translateX(5%) scale(1.584); transform-origin: center bottom; }
+.projectGallery .primoImage:nth-child(n+4) { height: clamp(280px, 57vw, 840px); aspect-ratio: auto; overflow: hidden; }
+.projectGallery .primoImage:nth-child(4) { grid-column: 1/-1; }
+.projectGallery .primoImage:nth-child(5), .projectGallery .primoImage:last-child { grid-column: span 6; }
+.projectGallery .primoImage:last-child img { object-position: center bottom; }
 .patchworkGallery .galleryImage { overflow: hidden; }
 .patchworkGallery .galleryImage:nth-child(2), .patchworkGallery .galleryImage:nth-child(3) { grid-column: span 4; aspect-ratio: 3/4; }
 .patchworkGallery .galleryImage:nth-child(4), .patchworkGallery .galleryImage:nth-child(5) { grid-column: span 6; aspect-ratio: 4/3; }
@@ -79,6 +86,11 @@
  .projectInfo { grid-column: 1/-1; padding: 0; margin-bottom: 10px; font-size: 15px; line-height: 1.4; }
  .projectGallery .galleryImage { grid-column: auto; aspect-ratio: 3/4; }
  .projectGallery .galleryImage:nth-child(5) { grid-column: 1/-1; aspect-ratio: 4/3; }
+ .projectGallery .primoImage:nth-child(5) { grid-column: auto; aspect-ratio: 3/4; }
+ .projectGallery .primoImage:nth-child(4) { grid-column: 1/-1; aspect-ratio: 4/3; }
+ .projectGallery .primoImage:nth-child(n+4) { height: 66vw; aspect-ratio: auto; }
+ .projectGallery .primoImage:last-child { grid-column: auto; }
+ .projectGallery .primoImage:last-child img { transform: none; }
  .patchworkGallery .galleryImage:nth-child(2), .patchworkGallery .galleryImage:nth-child(3) { grid-column: auto; aspect-ratio: 3/4; }
  .patchworkGallery .galleryImage:nth-child(4), .patchworkGallery .galleryImage:nth-child(5) { grid-column: 1/-1; aspect-ratio: 4/3; }
  .patchworkGallery .galleryImage:nth-child(n+6) { grid-column: auto; aspect-ratio: 3/4; }

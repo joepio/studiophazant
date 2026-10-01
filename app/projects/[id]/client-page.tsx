@@ -10,6 +10,7 @@ export function ProjectPageClient({ data, query, variables }: any) {
   const isKube = variables.relativePath === 'bijzettafel.mdx';
   const isPatchwork = variables.relativePath === 'blokstoel.mdx';
   const isCocktail = variables.relativePath === 'bloktafel.mdx';
+  const isPrimo = variables.relativePath === 'loungestoelen.mdx';
   const kubeAlts = [
     'KUBE table with its removable yellow tray in the garden',
     'KUBE stool with its yellow upholstered seat, viewed from the side',
@@ -65,7 +66,7 @@ export function ProjectPageClient({ data, query, variables }: any) {
   return (
     <article className={`${styles.projectGallery} ${project.galleryLayout === 'wide-left' ? styles.wideLeft : ''} ${isPatchwork ? styles.patchworkGallery : ''} ${isCocktail ? styles.cocktailGallery : ''}`}>
       {info}
-      {gallery.map((src, index) => image(src, index))}
+      {gallery.map((src, index) => image(src, index, `${styles.galleryImage} ${isPrimo ? styles.primoImage : ''}`))}
     </article>
   );
 }
