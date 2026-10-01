@@ -39,6 +39,10 @@
 .galleryImage:nth-child(5) { grid-column: span 8; aspect-ratio: auto; }
 .wideLeft .galleryImage:nth-child(4) { grid-column: span 7; aspect-ratio: 4/3; }
 .wideLeft .galleryImage:nth-child(5) { grid-column: span 5; }
+.patchworkGallery .galleryImage { overflow: hidden; }
+.patchworkGallery .galleryImage:nth-child(2), .patchworkGallery .galleryImage:nth-child(3) { grid-column: span 4; aspect-ratio: 3/4; }
+.patchworkGallery .galleryImage:nth-child(4), .patchworkGallery .galleryImage:nth-child(5) { grid-column: span 6; aspect-ratio: 4/3; }
+.patchworkGallery .galleryImage:nth-child(n+6) { grid-column: span 4; aspect-ratio: 3/4; }
 .kubeGallery { width: min(76%, 1280px); margin: 0 auto 100px; display: grid; gap: clamp(24px, 2.8vw, 48px); }
 .kubeTopRow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.75fr); gap: clamp(18px, 3.5vw, 64px); align-items: start; }
 .kubeTopRow .projectInfo { grid-column: auto; font-size: clamp(14px, 1.15vw, 19px); }
@@ -73,6 +77,9 @@
  .projectInfo { grid-column: 1/-1; padding: 0; margin-bottom: 10px; font-size: 15px; line-height: 1.4; }
  .projectGallery .galleryImage { grid-column: auto; aspect-ratio: 3/4; }
  .projectGallery .galleryImage:nth-child(5) { grid-column: 1/-1; aspect-ratio: 4/3; }
+ .patchworkGallery .galleryImage:nth-child(2), .patchworkGallery .galleryImage:nth-child(3) { grid-column: auto; aspect-ratio: 3/4; }
+ .patchworkGallery .galleryImage:nth-child(4), .patchworkGallery .galleryImage:nth-child(5) { grid-column: 1/-1; aspect-ratio: 4/3; }
+ .patchworkGallery .galleryImage:nth-child(n+6) { grid-column: auto; aspect-ratio: 3/4; }
  .kubeGallery { gap: 16px; margin-bottom: 50px; }
  .kubeTopRow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
  .kubeTopRow .projectInfo { grid-column: 1/-1; padding: 0; font-size: 15px; line-height: 1.4; }
