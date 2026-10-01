@@ -9,6 +9,7 @@ export function ProjectPageClient({ data, query, variables }: any) {
   const gallery: string[] = project.gallery?.length ? project.gallery : [project.imageUrl].filter(Boolean);
   const isKube = variables.relativePath === 'bijzettafel.mdx';
   const isPatchwork = variables.relativePath === 'blokstoel.mdx';
+  const isCocktail = variables.relativePath === 'bloktafel.mdx';
   const kubeAlts = [
     'KUBE table with its removable yellow tray in the garden',
     'KUBE stool with its yellow upholstered seat, viewed from the side',
@@ -38,7 +39,7 @@ export function ProjectPageClient({ data, query, variables }: any) {
   const image = (src: string, index: number, className = styles.galleryImage, sizes = '(max-width: 640px) 90vw, 48vw') => (
     <div key={`${src}-${index}`} className={className}>
       <Image src={src} alt={isKube ? kubeAlts[index] || `${project.title} — detail ${index}` : isPatchwork ? patchworkAlts[index] || `${project.title} — detail ${index}` : `${project.title} — ${index === 0 ? 'overview' : `detail ${index}`}`} fill
-        sizes={sizes} quality={isKube || isPatchwork ? 85 : undefined} className="object-cover" style={isPatchwork ? { transform: src === '/uploads/patchwork-chair-p1010036.webp' ? 'scaleX(-1)' : ['/uploads/patchwork-chair-p1010016.webp', '/uploads/patchwork-chair-p1010011.webp'].includes(src) ? 'scale(1.08)' : undefined } : undefined} priority={index < 2} />
+        sizes={sizes} quality={isKube || isPatchwork || isCocktail ? 85 : undefined} className="object-cover" style={isPatchwork ? { transform: src === '/uploads/patchwork-chair-p1010036.webp' ? 'scaleX(-1)' : ['/uploads/patchwork-chair-p1010016.webp', '/uploads/patchwork-chair-p1010011.webp'].includes(src) ? 'scale(1.08)' : undefined } : isCocktail && index < 2 ? { objectPosition: index === 0 ? 'center 85%' : 'center 65%' } : undefined} priority={index < 2} />
     </div>
   );
 
@@ -62,7 +63,7 @@ export function ProjectPageClient({ data, query, variables }: any) {
   }
 
   return (
-    <article className={`${styles.projectGallery} ${project.galleryLayout === 'wide-left' ? styles.wideLeft : ''} ${isPatchwork ? styles.patchworkGallery : ''}`}>
+    <article className={`${styles.projectGallery} ${project.galleryLayout === 'wide-left' ? styles.wideLeft : ''} ${isPatchwork ? styles.patchworkGallery : ''} ${isCocktail ? styles.cocktailGallery : ''}`}>
       {info}
       {gallery.map((src, index) => image(src, index))}
     </article>
