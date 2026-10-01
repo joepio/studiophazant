@@ -12,6 +12,7 @@ export function ProjectPageClient({ data, query, variables }: any) {
   const isCocktail = variables.relativePath === 'bloktafel.mdx';
   const isPrimo = variables.relativePath === 'loungestoelen.mdx';
   const isCoffee = variables.relativePath === 'eettafel.mdx';
+  const isFrames = variables.relativePath === 'lijst-klein.mdx';
   const kubeAlts = [
     'KUBE table with its removable yellow tray in the garden',
     'KUBE stool with its yellow upholstered seat, viewed from the side',
@@ -32,9 +33,9 @@ export function ProjectPageClient({ data, query, variables }: any) {
   const info = (
     <div className={styles.projectInfo}>
       <h1>{project.title}</h1>
-      <p>{project.description}</p>
+      {project.description && <p>{project.description}</p>}
       <a href={`mailto:info@studiophazant.nl?subject=${encodeURIComponent(project.title)}`}>
-        {project.enquiry || "Get in touch about a custom piece or the different possibilities in wood and finish."}
+        {variables.relativePath === 'lijst-klein.mdx' ? 'get in touch about a custom frame to fit your favourite artwork' : project.enquiry || "Get in touch about a custom piece or the different possibilities in wood and finish."}
       </a>
     </div>
   );
@@ -67,7 +68,7 @@ export function ProjectPageClient({ data, query, variables }: any) {
   return (
     <article className={`${styles.projectGallery} ${project.galleryLayout === 'wide-left' ? styles.wideLeft : ''} ${isPatchwork ? styles.patchworkGallery : ''} ${isCocktail ? styles.cocktailGallery : ''}`}>
       {info}
-      {gallery.map((src, index) => image(src, index, `${styles.galleryImage} ${isPrimo ? styles.primoImage : ''} ${isCoffee ? (src === '/uploads/coffee-table-p1010002.webp' ? styles.coffeeWide : src === '/uploads/coffee-table-p1010046.webp' ? styles.coffeeLandscape : styles.coffeePortrait) : ''}`))}
+      {gallery.map((src, index) => image(src, index, `${styles.galleryImage} ${isFrames ? styles.frameImage : ''} ${isPrimo ? styles.primoImage : ''} ${isCoffee ? (src === '/uploads/coffee-table-p1010002.webp' ? styles.coffeeWide : src === '/uploads/coffee-table-p1010046.webp' ? styles.coffeeLandscape : styles.coffeePortrait) : ''}`))}
     </article>
   );
 }

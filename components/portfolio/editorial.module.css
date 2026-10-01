@@ -34,6 +34,7 @@
 .projectInfo a { display: block; }
 .projectInfo a:hover { text-decoration: underline; }
 .galleryImage { position: relative; grid-column: span 6; aspect-ratio: 4/3; min-width: 0; }
+.projectGallery .galleryImage.frameImage { grid-column: span 4; aspect-ratio: 3/4; align-self: start; }
 .projectGallery .galleryImage.coffeeLandscape { aspect-ratio: 4/3; align-self: start; }
 .projectGallery .galleryImage.coffeePortrait { aspect-ratio: 3/4; align-self: start; }
 .projectGallery .galleryImage.coffeeWide { grid-column: span 8; aspect-ratio: 2742/1585; align-self: start; }
@@ -92,6 +93,7 @@
  .projectInfo { grid-column: 1/-1; padding: 0; margin-bottom: 10px; font-size: 15px; line-height: 1.4; }
  .projectGallery .galleryImage { grid-column: auto; aspect-ratio: 3/4; }
  .projectGallery .galleryImage:nth-child(5) { grid-column: 1/-1; aspect-ratio: 4/3; }
+ .projectGallery .galleryImage.frameImage { grid-column: auto; aspect-ratio: 3/4; }
  .projectGallery .galleryImage.coffeeWide { grid-column: 1/-1; }
  .projectGallery .galleryImage.coffeePortrait, .projectGallery .galleryImage.coffeeLandscape:nth-child(4) { grid-column: auto; }
  .projectGallery .primoImage:nth-child(5) { grid-column: auto; aspect-ratio: 3/4; }
