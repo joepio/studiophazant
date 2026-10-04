@@ -1,10 +1,16 @@
-import { getAllProjects } from '@/lib/project-loader';
+import { getAllProjects, getWorkProjects } from '@/lib/project-loader';
 import { getPage } from '@/lib/project-loader';
 import { SimpleLayout } from '@/components/layout/simple-layout';
 import { HomePageClient } from '@/components/portfolio/home-page-client';
 
 export default async function Home() {
   const projects = getAllProjects();
+  const workProjects = getWorkProjects();
+  const carouselProjects = [...workProjects];
+  for (let index = carouselProjects.length - 1; index > 0; index--) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [carouselProjects[index], carouselProjects[randomIndex]] = [carouselProjects[randomIndex], carouselProjects[index]];
+  }
   const furniture = projects.filter((project) => project.category === 'furniture');
   const home = getPage('home') as { carouselItems?: { image?: string; alt?: string; project?: string }[] };
   const pageData = {
@@ -41,7 +47,7 @@ export default async function Home() {
         query={query}
         variables={{ relativePath: 'home.mdx' }}
         furniture={furniture}
-        projects={projects}
+        projects={carouselProjects}
       />
     </SimpleLayout>
   );

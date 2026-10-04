@@ -7,7 +7,7 @@ import { tinaField } from 'tinacms/dist/react';
 import styles from './home-showcase.module.css';
 import { Monogram } from './monogram';
 
-type Project = { id: string; title: string; imageUrl: string };
+type Project = { id: string; title: string; imageUrl: string; imagePosition?: string; imageScale?: number; imageOffsetY?: number; imageAlignment?: string };
 type HomeContent = {
   carouselItems?: { image?: string; alt?: string; project?: { title?: string; _sys?: { filename?: string } } | null }[];
   spotlightImage?: string;
@@ -25,10 +25,7 @@ type HomeContent = {
 export function HomeShowcase({ home, projects }: { home: HomeContent; projects: Project[] }) {
   const projectStripRef = useRef<HTMLDivElement>(null);
   const spotlight = home.spotlightImage || '/uploads/home-cabinet-blue-pot-rug.png';
-  const carousel =
-    home.carouselItems == null
-      ? projects.map((project) => ({ image: project.imageUrl, alt: project.title, project: { title: project.title, _sys: { filename: project.id } } }))
-      : home.carouselItems;
+  const carousel = projects.map(project => ({ ...project, image: project.imageUrl, alt: project.title, project: { title: project.title, _sys: { filename: project.id } } }));
 
   useEffect(() => {
     const strip = projectStripRef.current;
@@ -198,14 +195,17 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
                   data-tina-field={tinaField(item, 'image')}
                   draggable={false}
                 >
-                  <Image
+                  {item.imageAlignment ? <svg viewBox="0 0 1467 1458" width="100%" height="100%" role="img" aria-label={item.alt}>
+                    <image href={item.image} y={item.imageOffsetY ?? 0} width="1467" height="1458" preserveAspectRatio={item.imageAlignment} />
+                  </svg> : <Image
                     src={item.image}
                     alt={item.alt || item.project?.title || 'Studio Phazant project'}
                     fill
                     sizes='(max-width: 700px) 28vw, 18vw'
                     className={styles.cover}
+                    style={{ objectPosition: item.imagePosition, transform: `scale(${item.imageScale ?? 1})`, transformOrigin: item.imageScale ? 'center bottom' : 'center' }}
                     draggable={false}
-                  />
+                  />}
                 </Link>
               ) : null
             )}
