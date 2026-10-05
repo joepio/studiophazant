@@ -251,7 +251,9 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
             <Monogram className={styles.studioLogo} size='xl' withText={false} color='#ffe28a' />
           </Link>
           <p className='font-ui-sans'>
-            {home.studioCopy || 'Meubelmaker in Noord-Holland. Maatwerk meubels, interieurs en objecten, met aandacht voor vakmanschap en duurzaam hout.'}
+            {(home.studioCopy || 'Meubelmaker in Noord-Holland. Maatwerk meubels, interieurs en objecten, met aandacht voor vakmanschap en duurzaam hout.').split('\n').map((line, index) => (
+              <span key={index}>{index > 0 && '\n'}{line.trim() === 'Studio Phazant' ? <span className={`font-script ${styles.studioName}`}>{line}</span> : line.includes('info@studiophazant.nl') ? <>{line.split('info@studiophazant.nl')[0]}<a className={styles.studioEmail} href='mailto:info@studiophazant.nl'>info@studiophazant.nl</a>{line.split('info@studiophazant.nl')[1]}</> : line.includes('@studiophazant') ? <>{line.split('@studiophazant')[0]}<a className={styles.studioEmail} href='https://www.instagram.com/studiophazant/'>@studiophazant</a>{line.split('@studiophazant')[1]}</> : line}</span>
+            ))}
           </p>
         </div>
       </footer>
