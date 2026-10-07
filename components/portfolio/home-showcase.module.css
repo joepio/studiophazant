@@ -167,6 +167,8 @@
   line-height: 0.92;
 }
 .invitation h2 {
+  position: relative;
+  top: -20px;
   font: inherit;
   font-size: min(1em, 65px);
   margin: 0;
@@ -184,6 +186,7 @@
   transform: translateX(55px);
 }
 .invitation a {
+  transform: translateY(20px);
   position: absolute;
   top: calc(100% + 26px);
   left: clamp(180px, 30vw, 560px);
