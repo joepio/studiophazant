@@ -3,23 +3,26 @@ import { SimpleLayout } from "@/components/layout/simple-layout";
 import { notFound } from "next/navigation";
 import { ProjectPageClient } from "./client-page";
 import { getProjectFiles, getProject } from "@/lib/project-loader";
+import { getProjectId, projectSlugs } from "@/lib/project-urls";
 
 export async function generateStaticParams() {
   const files = getProjectFiles();
   return files.map((file) => ({
-    id: file.replace(/\.mdx$/, ""),
+    id: projectSlugs[file.replace(/\.mdx$/, "")] || file.replace(/\.mdx$/, ""),
   }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+  const { id: slug } = await params;
+  const id = getProjectId(slug);
   if (!getProjectFiles().includes(`${id}.mdx`)) return {};
   const project = getProject(`${id}.mdx`);
   return { title: project.title, description: project.description, openGraph: { images: [project.imageUrl] } };
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+  const { id: slug } = await params;
+  const id = getProjectId(slug);
 
   // For visual editing to work, we still need to pass the query and variables
   // But for the initial render, we use the filesystem data

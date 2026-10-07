@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getProjectUrl } from "@/lib/project-urls";
 import type { CSSProperties } from "react";
 import { organicShapes } from "./portfolio-grid";
 import styles from "./editorial.module.css";
@@ -17,7 +18,7 @@ export function WorkGrid({ projects }: { projects: WorkProject[] }) {
       const colorIndex = index === 6 ? 2 : shapeIndex;
       const arrow = index === 6 ? 'left' : index === 7 ? 'right' : textCell - imageCell === 3 ? 'up' : imageCell < textCell ? 'left' : 'right';
       return <article className={styles.workPair} key={project.id}>
-        <Link href={`/projects/${project.id}`} className={`${styles.workImage} portfolio-tile`} style={{...placement(imageCell), backgroundColor: organic ? colors[colorIndex] : undefined, '--work-image-scale': project.imageScale ?? 1, '--work-image-origin': project.imageScale ? 'center bottom' : 'center'} as CSSProperties} aria-label={project.title}>
+        <Link href={getProjectUrl(project.id)} className={`${styles.workImage} portfolio-tile`} style={{...placement(imageCell), backgroundColor: organic ? colors[colorIndex] : undefined, '--work-image-scale': project.imageScale ?? 1, '--work-image-origin': project.imageScale ? 'center bottom' : 'center'} as CSSProperties} aria-label={project.title}>
           {organic ? <svg viewBox="0 0 1467 1458" role="img" aria-label={project.title}>
             <defs><clipPath id={`work-${project.id}`}><path className="portfolio-tile__shape" d={organicShapes[shapeIndex]} style={{'--shape-base': `path("${organicShapes[shapeIndex]}")`, '--shape-hover': `path("${organicShapes[(shapeIndex + 1) % 3]}")`} as CSSProperties} /></clipPath></defs>
             <g clipPath={`url(#work-${project.id})`}>
@@ -25,7 +26,7 @@ export function WorkGrid({ projects }: { projects: WorkProject[] }) {
             </g>
           </svg> : <Image src={project.imageUrl} alt={project.title} fill sizes="(max-width: 640px) 45vw, 30vw" className="object-cover" style={{objectPosition: project.imagePosition}} />}
         </Link>
-        <Link href={`/projects/${project.id}`} className={`${styles.workInfo} ${styles[arrow]} ${index === 6 ? styles.splitBottom : index === 7 ? styles.splitTop : ''}`} style={placement(textCell)}>
+        <Link href={getProjectUrl(project.id)} className={`${styles.workInfo} ${styles[arrow]} ${index === 6 ? styles.splitBottom : index === 7 ? styles.splitTop : ''}`} style={placement(textCell)}>
           <h2>{project.title}</h2><span className={styles.arrow} aria-hidden="true" />
           <p>{project.materials || project.description}</p>
           {project.availability && <p>{project.availability}</p>}

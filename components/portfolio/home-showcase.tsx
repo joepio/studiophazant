@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getProjectUrl } from '@/lib/project-urls';
 import { tinaField } from 'tinacms/dist/react';
 import styles from './home-showcase.module.css';
 import { Monogram } from './monogram';
@@ -188,7 +189,7 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
             {carousel.map((item, index) =>
               item.image ? (
                 <Link
-                  href={item.project?._sys?.filename ? `/projects/${item.project._sys.filename}` : '/work'}
+                  href={item.project?._sys?.filename ? getProjectUrl(item.project._sys.filename) : '/work'}
                   className={styles.project}
                   key={index}
                   aria-label={item.alt || item.project?.title}

@@ -1,6 +1,10 @@
 import type { NextConfig } from 'next'
+import { projectSlugs } from './lib/project-urls'
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return Object.entries(projectSlugs).map(([id, slug]) => ({source: `/projects/${id}`, destination: `/projects/${slug}`, permanent: true}));
+  },
   images: {
     remotePatterns: [
       {

@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getProjectUrl } from "@/lib/project-urls";
 import { cn } from "@/lib/utils";
 
 interface PortfolioItem {
@@ -68,7 +69,7 @@ export function PortfolioSection({ id, title, projects, compact = false, fullBle
           {projects.map((item, i) => (
             <Link
               key={item.id}
-              href={`/projects/${item.id}`}
+              href={getProjectUrl(item.id)}
               className={cn(
                 "group relative overflow-hidden block",
                 compact
