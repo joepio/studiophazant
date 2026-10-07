@@ -44,6 +44,9 @@
 .galleryImage:nth-child(2), .galleryImage:nth-child(3) { grid-column: span 4; aspect-ratio: 1; }
 .galleryImage:nth-child(4) { grid-column: span 4; aspect-ratio: 3/4; }
 .galleryImage:nth-child(5) { grid-column: span 8; aspect-ratio: auto; }
+.projectGallery .lampWideDetail { grid-column: span 7; aspect-ratio: 4/3; align-self: start; }
+.projectGallery .lampBesideDetail { grid-column: span 5; }
+.projectGallery .lampBesideDetail img { object-position: center 100%; }
 .wideLeft .galleryImage:nth-child(4) { grid-column: span 7; aspect-ratio: 4/3; }
 .wideLeft .galleryImage:nth-child(5) { grid-column: span 5; }
 .cocktailGallery .galleryImage:nth-last-child(-n+2) { aspect-ratio: 3/4; }
@@ -101,6 +104,8 @@
  .projectInfo { grid-column: 1/-1; padding: 0; margin-bottom: 10px; font-size: 15px; line-height: 1.4; }
  .projectGallery .galleryImage { grid-column: auto; aspect-ratio: 3/4; }
  .projectGallery .galleryImage:nth-child(5) { grid-column: 1/-1; aspect-ratio: 4/3; }
+ .projectGallery .lampWideDetail { grid-column: 1/-1; aspect-ratio: 4/3; }
+ .projectGallery .lampBesideDetail { grid-column: 1/-1; aspect-ratio: 3/4; align-self: start; }
  .projectGallery .galleryImage.frameImage { grid-column: auto; aspect-ratio: 3/4; }
  .projectGallery .galleryImage.coffeeWide { grid-column: 1/-1; }
  .projectGallery .galleryImage.coffeePortrait, .projectGallery .galleryImage.coffeeLandscape:nth-child(4) { grid-column: auto; }
