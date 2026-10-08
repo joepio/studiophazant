@@ -264,7 +264,7 @@
   width: clamp(130px, 17vw, 280px);
   margin: clamp(8px, 1.5vw, 24px) 0 0;
   color: #ffe28a;
-  font-family: var(--font-serif), Georgia, serif;
+  font-family: var(--font-sans), sans-serif;
   font-size: clamp(11px, 1.15vw, 18px);
   line-height: 1.14;
   white-space: pre-line;
