@@ -99,10 +99,10 @@ export function SimpleLayout({ children, showSalesCta = true, editorial = false 
         </div>
 
         <div className='h-full flex flex-col items-center justify-center px-6'>
-          <Link href='/' onClick={() => setMenuOpen(false)} aria-label='Studio Phazant home' className='mb-10'>
+          <Link href='/' onClick={() => setMenuOpen(false)} aria-label='Studio Phazant home' className='mb-10 scale-[1.56] -translate-x-[8px]'>
             <Monogram size='lg' withText={false} />
           </Link>
-          <ul className='flex flex-col items-center gap-6 font-serif italic text-[#4b7f4a] text-3xl'>
+          <ul className='flex flex-col items-center gap-6 text-[#4b7f4a] text-3xl' style={{ fontFamily: 'var(--font-sans), sans-serif' }}>
             {navLinks.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} onClick={() => setMenuOpen(false)} className={navLinkClassName}>
