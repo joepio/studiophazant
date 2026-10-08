@@ -104,7 +104,7 @@
  .workPair:is(:hover, :focus-within) .workInfo .arrow { width: calc(100% + 10px); transform: translateX(-10px); }
  .workPair:is(:hover, :focus-within) .workInfo .arrow::after { top: -4px; }
  .workPair:nth-child(even):is(:hover, :focus-within) .workInfo .arrow { transform: none; }
- .projectGallery { width: 88%; gap: 16px; margin-bottom: 50px; grid-template-columns: repeat(2,minmax(0,1fr)); }
+ .projectGallery { width: 88%; gap: 16px; margin-bottom: 50px; grid-template-columns: minmax(0,1fr); }
  .projectInfo { grid-column: 1/-1; padding: 0; margin-bottom: 10px; font-size: 15px; line-height: 1.4; }
  .projectGallery .galleryImage { grid-column: auto; aspect-ratio: 3/4; }
  .projectGallery .galleryImage:nth-child(5) { grid-column: 1/-1; aspect-ratio: 4/3; }
@@ -122,10 +122,12 @@
  .patchworkGallery .galleryImage:nth-child(4), .patchworkGallery .galleryImage:nth-child(5) { grid-column: 1/-1; aspect-ratio: 4/3; }
  .patchworkGallery .galleryImage:nth-child(n+6) { grid-column: auto; aspect-ratio: 3/4; }
  .kubeGallery { gap: 16px; margin-bottom: 50px; }
- .kubeTopRow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+ .kubeTopRow { grid-template-columns: minmax(0, 1fr); gap: 16px; }
  .kubeTopRow .projectInfo { grid-column: 1/-1; padding: 0; font-size: 15px; line-height: 1.4; }
  .kubeBottomRow, .kubeExtraRow { grid-template-columns: 1fr; gap: 16px; }
  .kubeDetail { aspect-ratio: 4/3; }
+ .projectGallery.projectGallery > .galleryImage:nth-child(n) { grid-column: 1 / -1; width: 100%; }
+ .kubeGallery .kubeImage { width: 100%; }
  .aboutHero { width: 90%; aspect-ratio: 1.5; }
  .aboutCopy { width: 86%; line-height: 1.5; margin-top: 25px; }
 }

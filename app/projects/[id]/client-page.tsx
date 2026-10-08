@@ -57,7 +57,7 @@ export function ProjectPageClient({ data, query, variables }: any) {
       <article className={styles.kubeGallery}>
         <div className={styles.kubeTopRow}>
           {info}
-          {gallery.slice(0, 2).map((src, index) => image(src, index, `${styles.kubeImage} ${index === 0 ? styles.kubeOverview : styles.kubePortrait}`, '(max-width: 640px) 44vw, (max-width: 900px) 30vw, 27vw'))}
+          {gallery.slice(0, 2).map((src, index) => image(src, index, `${styles.kubeImage} ${index === 0 ? styles.kubeOverview : styles.kubePortrait}`, '(max-width: 640px) 88vw, (max-width: 900px) 30vw, 27vw'))}
         </div>
         <div className={styles.kubeBottomRow}>
           {gallery.slice(2, 4).map((src, index) => image(src, index + 2, `${styles.kubeImage} ${index === 1 ? styles.kubeUpholstered : styles.kubeDetail}`, '(max-width: 640px) 88vw, (max-width: 900px) 50vw, 43vw'))}
