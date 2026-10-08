@@ -93,13 +93,17 @@
  .workGrid { display: block; width: 90%; margin-bottom: 50px; }
  .workPair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
  .workImage, .workInfo { grid-column: auto; grid-row: auto; }
+ .workPair:nth-child(even) .workImage { grid-column: 2; grid-row: 1; }
+ .workPair:nth-child(even) .workInfo { grid-column: 1; grid-row: 1; }
  .workInfo { font-size: 12px; padding: 10%; text-align: left; }
  .splitTop, .splitBottom { aspect-ratio: 1; height: auto; align-self: stretch; }
  .up h2, .up p { padding-right: 0; }
  .arrow::before { display: none; }
  .workInfo .arrow::after { left: 0; right: auto; top: -4px; transform: rotate(-135deg); }
+ .workPair:nth-child(even) .workInfo .arrow::after { left: auto; right: 0; transform: rotate(45deg); }
  .workPair:is(:hover, :focus-within) .workInfo .arrow { width: calc(100% + 10px); transform: translateX(-10px); }
  .workPair:is(:hover, :focus-within) .workInfo .arrow::after { top: -4px; }
+ .workPair:nth-child(even):is(:hover, :focus-within) .workInfo .arrow { transform: none; }
  .projectGallery { width: 88%; gap: 16px; margin-bottom: 50px; grid-template-columns: repeat(2,minmax(0,1fr)); }
  .projectInfo { grid-column: 1/-1; padding: 0; margin-bottom: 10px; font-size: 15px; line-height: 1.4; }
  .projectGallery .galleryImage { grid-column: auto; aspect-ratio: 3/4; }
