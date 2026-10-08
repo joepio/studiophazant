@@ -54,6 +54,8 @@
 .lyktGallery .galleryImage:nth-child(2), .lyktGallery .galleryImage:nth-child(3), .lyktGallery .galleryImage:nth-child(6), .lyktGallery .galleryImage:nth-child(7) { aspect-ratio: 3/4; }
 .lyktGallery .galleryImage:nth-child(2) { aspect-ratio: 1467/1458; overflow: hidden; }
 .lyktGallery .galleryImage:nth-child(3) { aspect-ratio: 1467/1458; overflow: hidden; }
+.lyktGallery .galleryImage > svg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+@media (min-width: 641px) { .lyktGallery .galleryImage > svg > image { y: 0; } }
 .lyktGallery .galleryImage:nth-child(n+4):nth-child(-n+6) { grid-column: span 4; aspect-ratio: 3/4; }
 .lyktGallery .galleryImage:nth-child(n+7) { grid-column: span 6; aspect-ratio: 3/4; }
 .projectGallery .primoImage { aspect-ratio: 3/4; }
