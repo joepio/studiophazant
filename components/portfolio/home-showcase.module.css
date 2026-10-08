@@ -307,7 +307,7 @@
   }
   .invitation {
     margin-top: 26vw;
-    font-size: 5.3vw;
+    font-size: 5.83vw;
   }
   .invitationLine:first-child,
   .invitationLine:nth-child(2) {
@@ -323,7 +323,8 @@
   }
   .studio {
     --studio-content-offset: 0px;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     padding-inline: 7.5%;
   }
   .studioIdentity {
@@ -340,7 +341,19 @@
   .studioIdentity p {
     font-size: 15px;
   }
-  .workshop { left: 0; }
+  .workshop {
+    left: 0;
+    display: block;
+    flex: none;
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+  }
+  .workshop::before {
+    content: '';
+    display: block;
+    padding-top: 54.347826%;
+  }
   .studioLogo > span {
     height: 60px;
   }
