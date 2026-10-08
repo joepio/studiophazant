@@ -42,7 +42,7 @@ export function ProjectPageClient({ data, query, variables }: any) {
     </div>
   );
   const image = (src: string, index: number, className = styles.galleryImage, sizes = '(max-width: 640px) 90vw, 48vw') => (
-    <div key={`${src}-${index}`} className={`${className} ${isKubeLamp && index === 2 ? styles.lampWideDetail : isKubeLamp && index === 3 ? styles.lampBesideDetail : ''}`}>
+    <div key={`${src}-${index}`} className={`${className} ${isKubeLamp ? (['/uploads/lamp5.jpg', '/uploads/lamp7.jpg'].includes(src) ? styles.lampLandscape : styles.lampPortrait) : ''}`}>
       {isLykt && src === '/uploads/work-lykt-floor-lamp.jpg' ? <svg viewBox="0 0 1467 1458" width="100%" height="100%" role="img" aria-label="LYKT Floor Lamp">
         <image href={src} y={40} width="1467" height="1458" preserveAspectRatio="xMidYMin slice" />
       </svg> : <>
