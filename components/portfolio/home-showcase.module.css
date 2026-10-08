@@ -280,6 +280,9 @@
 .studioEmail { transition: color 200ms ease; }
 .studioEmail:hover, .studioEmail:focus-visible { color: #bedfe3; }
 @media (max-width: 600px) {
+  .contact {
+    min-height: clamp(320px, 82vw, 400px);
+  }
   .featurePanel {
     padding-block: 9vw;
   }

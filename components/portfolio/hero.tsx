@@ -14,7 +14,7 @@ export function Hero({ imageSrc = "/uploads/home-hero-p9030024.jpg", imageAlt = 
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[60%_60%]"
+          className="object-cover object-[14%_60%] md:object-[60%_60%]"
         />
         <div className="absolute inset-0 bg-black/20" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
