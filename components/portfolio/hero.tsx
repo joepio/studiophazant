@@ -1,10 +1,21 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 export function Hero({ imageSrc = "/uploads/home-hero-p9030024.jpg", imageAlt = "Studio Phazant — handcrafted lounge chairs" }: {
   imageSrc?: string;
   imageAlt?: string;
 }) {
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const updateScroll = () => setHasScrolled(window.scrollY > 0);
+    updateScroll();
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    return () => window.removeEventListener("scroll", updateScroll);
+  }, []);
+
   return (
     <section className="w-full">
       <div className="@container relative h-[98svh] overflow-hidden bg-[#1c321e]">
@@ -23,6 +34,18 @@ export function Hero({ imageSrc = "/uploads/home-hero-p9030024.jpg", imageAlt = 
             <span className="block -translate-x-[6%]">Phazant</span>
           </h1>
         </div>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 32"
+          className={`pointer-events-none absolute bottom-6 left-1/2 hidden h-8 w-6 -translate-x-1/2 text-[#ffe28a] transition-opacity duration-200 motion-reduce:transition-none md:block ${hasScrolled ? "opacity-0" : "opacity-100"}`}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 3v24m-7-7 7 7 7-7" />
+        </svg>
       </div>
     </section>
   );
