@@ -32,6 +32,18 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
     const strip = projectStripRef.current;
     if (!strip) return;
 
+    const desktop = window.matchMedia('(min-width: 601px)');
+    let explored = false;
+    const centerStrip = () => {
+      if (desktop.matches && !explored) {
+        strip.scrollLeft = (strip.scrollWidth - strip.clientWidth) / 2;
+      }
+    };
+    const markExplored = () => { explored = true; };
+    const resizeObserver = new ResizeObserver(centerStrip);
+    resizeObserver.observe(strip);
+    centerStrip();
+
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const canHover = window.matchMedia('(hover: hover) and (pointer: fine)');
     let frame = 0;
@@ -64,6 +76,7 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
     };
     const start = (event: MouseEvent) => {
       if (reducedMotion.matches || !canHover.matches) return;
+      markExplored();
       updatePointerPosition(event);
       hovering = true;
       strip.style.scrollSnapType = 'none';
@@ -127,6 +140,9 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
     };
 
     strip.addEventListener('mouseenter', start);
+    strip.addEventListener('pointerdown', markExplored);
+    strip.addEventListener('wheel', markExplored, { passive: true });
+    strip.addEventListener('keydown', markExplored);
     strip.addEventListener('mouseleave', stop);
     strip.addEventListener('pointerdown', pointerDown);
     strip.addEventListener('pointermove', pointerMove);
@@ -135,6 +151,10 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
     strip.addEventListener('click', preventDraggedClick, true);
     return () => {
       stop();
+      resizeObserver.disconnect();
+      strip.removeEventListener('pointerdown', markExplored);
+      strip.removeEventListener('wheel', markExplored);
+      strip.removeEventListener('keydown', markExplored);
       window.clearTimeout(clickTimer);
       delete strip.dataset.dragging;
       strip.removeEventListener('mouseenter', start);
