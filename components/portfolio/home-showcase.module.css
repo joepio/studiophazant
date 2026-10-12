@@ -207,6 +207,11 @@
   text-decoration-thickness: 3px;
   text-underline-offset: 0.15em;
 }
+@media (min-width: 601px) {
+  .invitation a {
+    transform: translateY(45px);
+  }
+}
 .invitation a:hover,
 .invitation a:focus-visible {
   color: #bedfe3;
