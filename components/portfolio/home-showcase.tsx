@@ -217,12 +217,12 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
                   draggable={false}
                 >
                   {item.imageAlignment ? <svg viewBox="0 0 1467 1458" width="100%" height="100%" role="img" aria-label={item.alt}>
-                    <image href={item.image} y={item.imageOffsetY ?? 0} width="1467" height="1458" preserveAspectRatio={item.imageAlignment} />
+                    <image href={item.image} y={0} width="1467" height="1458" preserveAspectRatio={item.imageAlignment} />
                   </svg> : <Image
                     src={item.image}
                     alt={item.alt || item.project?.title || 'Studio Phazant project'}
                     fill
-                    sizes='(max-width: 700px) 28vw, 18vw'
+                    sizes='(max-width: 600px) 40vw, 20vw'
                     className={styles.cover}
                     style={{ objectPosition: item.imagePosition, transform: `scale(${item.imageScale ?? 1})`, transformOrigin: item.imageScale ? 'center bottom' : 'center' }}
                     draggable={false}

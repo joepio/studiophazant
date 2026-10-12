@@ -290,6 +290,9 @@
 .studioEmail { transition: color 200ms ease; }
 .studioEmail:hover, .studioEmail:focus-visible { color: #bedfe3; }
 @media (max-width: 600px) {
+  .projects {
+    padding-block: 10vw;
+  }
   .contact {
     min-height: clamp(320px, 82vw, 400px);
   }
@@ -300,14 +303,14 @@
     width: 90%;
   }
   .project {
-    min-width: 28vw;
+    min-width: 40vw;
   }
   .projectStrip {
     width: 100%;
     padding-inline: 6%;
   }
   .project {
-    flex-basis: 28vw;
+    flex-basis: 40vw;
   }
   .contactInner {
     height: auto;
