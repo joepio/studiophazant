@@ -77,6 +77,19 @@
   object-fit: contain;
   background: #1c321e;
 }
+.legalFooter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px 32px;
+  padding: 24px 6%;
+  background: #55874a;
+  color: #ffe28a;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 13px;
+}
+.legalSections { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 24px; }
 .projects {
   padding: var(--section-blank-space) 0;
 }
@@ -233,6 +246,7 @@
   border-color: #bedfe3;
 }
 .studio {
+  background: #55874a;
   --studio-padding-top: var(--studio-green-extension);
   --studio-padding-bottom: clamp(42px, 6vw, 105px);
   --studio-green-extension: clamp(16px, 2.5vw, 40px);

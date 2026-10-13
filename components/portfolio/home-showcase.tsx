@@ -278,6 +278,15 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
           </p>
         </div>
       </footer>
+      <div className={styles.legalFooter}>
+        <span>© 2026 Studio Phazant</span>
+        <span aria-hidden='true'>/</span>
+        <div className={styles.legalSections}>
+          <span>Terms &amp; Conditions</span>
+          <span aria-hidden='true'>/</span>
+          <span>Privacy Statement</span>
+        </div>
+      </div>
     </div>
   );
 }
