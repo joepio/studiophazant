@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: "%s | Studio Phazant",
   },
   description:
-    "Studio Phazant is meubelmaker in Noord-Holland voor maatwerk meubels, unieke interieurs en houten objecten — ontworpen en handgemaakt met lokaal en hergebruikt hout.",
+    "Studio Phazant is een design studio en meubelmaker in Noord-Holland voor meubels, unieke interieurs en houten objecten — ontworpen en handgemaakt met lokaal en hergebruikt hout.",
   keywords: [
     "maatwerk meubels",
     "meubelmaker Noord-Holland",
