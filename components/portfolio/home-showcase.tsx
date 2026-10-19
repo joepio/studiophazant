@@ -3,6 +3,8 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Mail } from 'lucide-react';
+import { FaInstagram } from 'react-icons/fa';
 import { getProjectUrl } from '@/lib/project-urls';
 import { tinaField } from 'tinacms/dist/react';
 import styles from './home-showcase.module.css';
@@ -257,7 +259,7 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
         </div>
       </section>
 
-      <footer className={styles.studio}>
+      <footer id='contact-info' className={styles.studio}>
         <div className={styles.workshop}>
           <Image
             src={home.studioImage || '/uploads/hout_1.jpg'}
@@ -273,7 +275,7 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
           </Link>
           <p className='font-ui-sans'>
             {(home.studioCopy || 'Meubelmaker in Noord-Holland. Maatwerk meubels, interieurs en objecten, met aandacht voor vakmanschap en duurzaam hout.').split('\n').map((line, index) => (
-              <span key={index}>{index > 0 && '\n'}{line.trim() === 'Studio Phazant' ? <span className={`font-script ${styles.studioName}`}>{line}</span> : line.includes('info@studiophazant.nl') ? <>{line.split('info@studiophazant.nl')[0]}<a className={styles.studioEmail} href='mailto:info@studiophazant.nl'>info@studiophazant.nl</a>{line.split('info@studiophazant.nl')[1]}</> : line.includes('@studiophazant') ? <>{line.split('@studiophazant')[0]}<a className={styles.studioEmail} href='https://www.instagram.com/studiophazant/' target='_blank' rel='noopener noreferrer'>@studiophazant</a>{line.split('@studiophazant')[1]}</> : line}</span>
+              <span key={index}>{index > 0 && '\n'}{line.trim() === 'Studio Phazant' ? <span className={`font-script ${styles.studioName}`}>{line}</span> : line.includes('info@studiophazant.nl') ? <><a className={styles.studioEmail} href='mailto:info@studiophazant.nl' aria-label='Email Studio Phazant at info@studiophazant.nl'><Mail className={styles.contactIcon} aria-hidden='true' />info@studiophazant.nl</a>{line.split('info@studiophazant.nl')[1]}</> : line.includes('@studiophazant') ? <><a className={styles.studioEmail} href='https://www.instagram.com/studiophazant/' target='_blank' rel='noopener noreferrer' aria-label='Studio Phazant on Instagram (opens in a new tab)'><FaInstagram className={styles.contactIcon} aria-hidden='true' />@studiophazant</a>{line.split('@studiophazant')[1]}</> : line}</span>
             ))}
           </p>
         </div>

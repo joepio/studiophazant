@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { Monogram } from '@/components/portfolio/monogram';
 import { SalesCta } from '@/components/marketing/sales-cta';
@@ -37,6 +38,10 @@ function DesktopNavList({
 }
 
 export function SimpleLayout({ children, showSalesCta = true, editorial = false }: { children: React.ReactNode; showSalesCta?: boolean; editorial?: boolean }) {
+  const pathname = usePathname();
+  const menuLinks = navLinks.map(link => pathname === '/' && link.label === 'contact'
+    ? { ...link, href: '#contact-info' }
+    : link);
   const [menuOpen, setMenuOpen] = React.useState(false);
   const navLinkClassName = editorial
     ? 'hover:opacity-70 transition-opacity'
@@ -78,7 +83,7 @@ export function SimpleLayout({ children, showSalesCta = true, editorial = false 
           <Link href='/' aria-label='Studio Phazant home' className='shrink-0 opacity-90'>
             <Monogram size='xl' withText={false} color={editorial ? '#55874a' : '#ffe28a'} />
           </Link>
-          <DesktopNavList items={navLinks} linkClassName={navLinkClassName} />
+          <DesktopNavList items={menuLinks} linkClassName={navLinkClassName} />
         </nav>
       </header>
 
@@ -103,7 +108,7 @@ export function SimpleLayout({ children, showSalesCta = true, editorial = false 
             <Monogram size='lg' withText={false} />
           </Link>
           <ul className='flex flex-col items-center gap-6 text-[#4b7f4a] text-3xl' style={{ fontFamily: 'var(--font-sans), sans-serif' }}>
-            {navLinks.map((item) => (
+            {menuLinks.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} onClick={() => setMenuOpen(false)} className={navLinkClassName}>
                   {item.label}
