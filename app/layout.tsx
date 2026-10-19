@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://studiophazant.nl"),
   icons: { icon: '/icon.svg', shortcut: '/icon.svg' },
   title: {
-    default: "Studio Phazant | Maatwerk meubels in Noord-Holland",
+    default: "Studio Phazant | Sustainable Furniture and Interiors, handcrafted in the Netherlands",
     template: "%s | Studio Phazant",
   },
   description:
