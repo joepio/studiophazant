@@ -274,9 +274,13 @@ export function HomeShowcase({ home, projects }: { home: HomeContent; projects: 
             <Monogram className={styles.studioLogo} size='xl' withText={false} color='#ffe28a' />
           </Link>
           <p className='font-ui-sans'>
-            {(home.studioCopy || 'Meubelmaker in Noord-Holland. Maatwerk meubels, interieurs en objecten, met aandacht voor vakmanschap en duurzaam hout.').split('\n').map((line, index) => (
-              <span key={index}>{index > 0 && '\n'}{line.trim() === 'Studio Phazant' ? <span className={`font-script ${styles.studioName}`}>{line}</span> : line.includes('info@studiophazant.nl') ? <><a className={styles.studioEmail} href='mailto:info@studiophazant.nl' aria-label='Email Studio Phazant at info@studiophazant.nl'><Mail className={styles.contactIcon} aria-hidden='true' />info@studiophazant.nl</a>{line.split('info@studiophazant.nl')[1]}</> : line.includes('@studiophazant') ? <><a className={styles.studioEmail} href='https://www.instagram.com/studiophazant/' target='_blank' rel='noopener noreferrer' aria-label='Studio Phazant on Instagram (opens in a new tab)'><FaInstagram className={styles.contactIcon} aria-hidden='true' />@studiophazant</a>{line.split('@studiophazant')[1]}</> : line}</span>
+            {(home.studioCopy || 'Meubelmaker in Noord-Holland. Maatwerk meubels, interieurs en objecten, met aandacht voor vakmanschap en duurzaam hout.').split('\n').filter(line => !line.includes('info@studiophazant.nl') && !line.includes('@studiophazant')).join('\n').trimEnd().split('\n').map((line, index) => (
+              <span key={index}>{index > 0 && '\n'}{line.trim() === 'Studio Phazant' ? <span className={`font-script ${styles.studioName}`}>{line}</span> : line}</span>
             ))}
+            <span className={styles.studioContacts}>
+              <a className={styles.studioEmail} href='mailto:info@studiophazant.nl' aria-label='Email Studio Phazant at info@studiophazant.nl'><Mail className={styles.contactIcon} aria-hidden='true' />info@studiophazant.nl</a>
+              <a className={styles.studioEmail} href='https://www.instagram.com/studiophazant/' target='_blank' rel='noopener noreferrer' aria-label='Studio Phazant on Instagram (opens in a new tab)'><FaInstagram className={styles.contactIcon} aria-hidden='true' />@studiophazant</a>
+            </span>
           </p>
         </div>
       </footer>
