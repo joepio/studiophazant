@@ -1,8 +1,8 @@
 .showcase {
-  --section-blank-space: clamp(82px, 12vw, 190px);
+  --section-blank-space: clamp(48px, 7vw, 110px);
   background: #fffaf5;
   color: #55874a;
-  padding-top: clamp(36px, 9vw, 144px);
+  padding-top: clamp(24px, 5vw, 80px);
 }
 .cover {
   object-fit: cover;
@@ -331,7 +331,7 @@
 .studioEmail:hover, .studioEmail:focus-visible { color: #bedfe3; }
 @media (max-width: 600px) {
   .projects {
-    padding-block: 10vw;
+    padding-block: 6vw;
   }
   .contact {
     min-height: clamp(320px, 82vw, 400px);
