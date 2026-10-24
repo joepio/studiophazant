@@ -110,7 +110,21 @@ export function SimpleLayout({ children, showSalesCta = true, editorial = false 
           <ul className='flex flex-col items-center gap-6 text-[#4b7f4a] text-3xl' style={{ fontFamily: 'var(--font-sans), sans-serif' }}>
             {menuLinks.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} onClick={() => setMenuOpen(false)} className={navLinkClassName}>
+                <Link
+                  href={item.label === 'contact' ? '/#contact-info' : item.href}
+                  onClick={(event) => {
+                    setMenuOpen(false);
+                    if (item.label === 'contact' && pathname === '/') {
+                      event.preventDefault();
+                      // Scroll after closing the overlay and releasing its scroll lock.
+                      window.requestAnimationFrame(() => {
+                        document.getElementById('contact-info')?.scrollIntoView({ block: 'start' });
+                        window.history.pushState(null, '', '#contact-info');
+                      });
+                    }
+                  }}
+                  className={navLinkClassName}
+                >
                   {item.label}
                 </Link>
               </li>
